@@ -7,7 +7,8 @@ I will put my reading notes of the following books:
 1. Altland & Simons, Condensed Matter Field Theory
 2. Xiao-Gang Wen, Quantum Field Theory of Many-Body System
 3. Subir Sachdev, Quantum Phase Transition
-4. Nagaosa Naoto, Quantum Field Theory in Condensed matter Field Theory
+4. 永長直人, Quantum Field Theory in Condensed matter Field Theory
 5. Ashcroft & Mermin, Solid State Physics
+6. Other interesting books and papers will be included.
 
 For each topic I will upload a .tex file and a .pdf file, if there were figures in the document, I will also put them on GitHub.
