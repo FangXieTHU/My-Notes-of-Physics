@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom = 3cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{feynmf}
+\linespread{1.1}
+
+\newcommand{\mtp}{\mathbf{p}}
+\newcommand{\mtq}{\mathbf{q}}
+\newcommand{\mtk}{\mathbf{k}}
+
+\author{\emph{Fang Xie, Department of Physics \& IASTU, Tsinghua University}}
+\title{{\bf{BCS Superconductor Theory}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+The superconductor was discovered by Onnes in 1911, and he won the Nobel Prize in Physics in 1913. 
+\section{Electron-Phonon Interaction Action}
+First we need to consider about how to quantize the oscillation of the lattice. The Hamiltonian of the phonon system can be written as:
+$$
+H = \sum_{\mtq \lambda} \omega_{\mtq\lambda} \left(a^\dagger_{\mtq\lambda}a_{\mtq\lambda}+\frac{1}{2}\right)
+$$
+in which $\lambda$ denotes the polarization of the phonon.So the partition function of the free phonon system can be constructed by the coherent state path integral. The action is written as shown:
+\begin{equation}
+S_{\mathrm{ph}}[\bar{\phi},\phi] = \sum_{q,\lambda}\bar{\phi}_{q\lambda}\left(-i\omega_m + \omega_\mtq\right)\phi_{q\lambda}
+\end{equation}
+In this action, $q = (\omega_m,\mtq)$ is a 4-momentum and $\omega_m$ is the Matsubara frequency for Bosons. But how does the displacement of the ion on the lattice be quantized? Just like what we do in QED, the creation-annihilation operators are the Fourier coefficients:
+\begin{equation}
+\mathbf{u}(\mathbf{x}) = \sum_{\mtq,\lambda}e^{i \mtq \cdot \mathbf{x}}\frac{1}{\sqrt{2M\omega_\mtq}}\mathbf{e}_{\mtq\lambda}(a_{\mtq\lambda}+a^\dagger_{-\mtq\lambda})
+\end{equation}
+Then we have to consider how the ions interact with the electrons. Since the ions are moving, there will be electric moment in the solid and obviously $\mathbf{P}\propto \mathbf{u}$, and the charge density will be the divergence of the electric moment, say
+$$
+\rho_{\mathrm{ion}} \propto -\nabla \cdot \mathbf{u}
+$$ 
+Thus the interaction Hamiltonian can be written as
+$$
+H_{\mathrm{el-ph}} = \gamma \int d^3x \,\rho_{\mathrm{el}}(\mathbf{x}) \nabla\cdot\mathbf{u}
+$$
+in which $\gamma$ is some positive constant with the dimension of energy. Now we change this integral into momentum space and it can be written as shown:
+\begin{equation}
+H_{\mathrm{el-ph}} = \gamma\int d^3x\, \frac{1}{L^3} \sum_{\mtq'}e^{-i\mtq'\cdot\mathbf{x}}\rho_{\mtq'}\sum_{\mtq\lambda}\frac{i\mtq\cdot \mathbf{e}_{\mtq\lambda}}{\sqrt{2M\omega_{\mtq}}}(a_{\mtq\lambda}+ a^\dagger_{-\mtq\lambda}) = \gamma \sum_{\mtq\lambda}\frac{i\mtq\cdot\mathbf{e}_{\mtq\lambda}}{\sqrt{2M\omega_{\mtq}}}\rho_{\mtq}(a_{\mtq\lambda}+ a^\dagger_{-\mtq\lambda}) 
+\end{equation}
+It is obvious that only the longitudinal component of the phonon will not vanish because $\mtq\cdot\mathbf{e}_{\mtq\lambda} = |\mtq|\delta_{\lambda,\mathrm{L}} $, we can neglect the polarization index and use the creation-annihilation operators of the longitudinal modes. Then the Hamiltonian is
+\begin{equation}
+H_{\mathrm{el-ph}} = \gamma \sum_{\mtq}\frac{i|\mtq|}{\sqrt{2M\omega_{\mtq}}} \rho_{\mtq}(a_{\mtq}+ a^\dagger_{-\mtq}) 
+\end{equation}
+in which the density operator is
+$$
+\rho_{\mtq} = \sum_{\mtq\sigma} c^\dagger_{\mtk+\mtq\sigma}c_{\mtk\sigma}
+$$
+Now we try to write down the Action of the interacting term. Use the Matsubara Frequencies, the Action can be written as:
+\begin{equation}
+S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi] = \gamma \sum_{q}\frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\left(\sum_k \bar{\psi}_{k+q\sigma}\psi_{k\sigma} \right)(\phi_{q}+ \bar{\phi}_{-q}) 
+\end{equation}
+in which $q = (\omega_m, \mtq)$ is a 4-momentum and $\omega_m$ is a Bosonic Matsubara Frequency; $k = (\omega_n,\mtq)$ is also a 4-momentum and $\omega_n$ is a Fermionic Matsubara Frequency. Now we can write down the Action of the whole system in Matsubara representation:
+\begin{equation}
+S[\bar{\psi},\psi,\bar{\phi},\phi] = \sum_{p}\bar{\psi}_{p\sigma}\left(-i\omega_n +\frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q +  \gamma \sum_{q}\frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\left(\sum_k \bar{\psi}_{k+q\sigma}\psi_{k\sigma} \right)(\phi_{q}+ \bar{\phi}_{-q}) 
+\end{equation}
+Next step is to integrate out the field of phonon and we can get the effective field theory of electrons:
+\begin{equation}
+S_{\mathrm{eff}}[\bar{\psi},\psi] = S_{\mathrm{el}}[\bar{\psi},\psi] - \ln{\left(\int D\bar{\phi}D\phi\,e^{-S_{\mathrm{ph}}[\bar{\phi},\phi]-S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi]}\right)}
+\end{equation}
+Since the free Action of the phonon system is a quadratic form, and the interaction Action can be treated as a "source" term, we can get the result of this effective action by a Gaussian Integral. The result is:
+\begin{eqnarray}
+& & \ln\left(\int D\bar\phi D\phi\,e^{-S_{\mathrm{ph}}[\bar{\phi},\phi]-S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi]}\right)\nonumber\\
+&=& \ln\left(\int D\bar\phi D\phi\, \exp\left\{- \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q - \gamma\sum_q \frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\rho_q\phi_q - (\rho_q\phi_q\leftrightarrow\rho_{-q}\bar{\phi}_{q}) \right\}\right)\nonumber\\
+&=& - \gamma^2 \sum_q \frac{\mtq^2}{2M\omega_\mtq}\frac{1}{-i\omega_m+ \omega_\mtq}\rho_q\rho_{-q}\nonumber\\
+&=& -\frac{\gamma^2}{2M}\sum_q \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2}\rho_q\rho_{-q}
+\end{eqnarray}
+
+
+\section{BCS Hamiltonian}
+
+\section{Cooper Pairs}
+
+\section{Spontaneous Symmetry Breaking}
+
+\section{Couple to the electromagnetic field}
+
+\section{Anderson-Higgs Mechanism}
+
+\end{document}

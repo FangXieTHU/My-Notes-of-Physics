@@ -1,0 +1,291 @@
+\documentclass{article}
+
+\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom = 3cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\linespread{1.1}
+
+\newcommand{\im}{\mathrm{i}}
+\newcommand{\ep}{\mathrm{e}}
+\newcommand{\ud}{\mathrm{d}}
+
+\author{\emph{Fang Xie, Department of Physics \& IASTU, Tsinghua University}}
+\title{{\bf{Notes of Interacting Boson System and Superfluid}}\\A Brief Introduction to Field Theory Method of Condensed Matter}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section{Path Integral Approach of a Boson system}
+To describe a quantum system, the best way is to find its Lagrangian and calculate the path integral. First we have to calculate the free boson system. The Hamiltonian is:
+\begin{equation}
+H = \sum_{k}\left(\frac{k^2}{2m}-\mu\right)a^\dagger_ka_k
+\end{equation}
+and the operators in our Hamiltonian are boson operators which obey the commute algebra. We know the path integral of the harmonic oscillator (from Wen's book page.20):
+$$
+H=\omega a^\dagger a \quad \rightarrow \quad \im G(a_b,t_b;a_a,t_a) = \int \mathcal{D}^2[a(t)]\exp{\left\{\im \int_{t_a}^{t_b}\ud t \left[\frac{\im}{2}\left(a^*\dot{a}-a\dot{a}^*\right)-\omega a^*a\right]\right\}}
+$$
+in which $|a\rangle$ is a coherent state with eigenvalue $a$. The definition of the integral measurement is 
+$$
+\mathcal{D}^2[a(t)] = \prod_{t} \frac{\ud \mathrm{Re}(a)\ud\mathrm{Im}(a)}{\pi}
+$$
+By this equation we can write down the path integral of the non-interacting system:
+\begin{equation}
+\int \mathcal{D}^2[a_k(t)]\exp{\left\{\im\int \ud t \sum_k \left[\frac{\im}{2}\left(a_k^*\dot{a}_k-a_k\dot{a}_k^*\right)-\left(\frac{k^2}{2m}-\mu\right)a^*_ka_k\right]\right\}}
+\end{equation}
+That means the Lagrangian of the non-interacting system is
+\begin{equation}
+L = \sum_k\left[\frac{\im}{2}\left(a_k^*\dot{a}_k-a_k\dot{a}_k^*\right)-\left(\frac{k^2}{2m}-\mu\right)a^*_ka_k\right]\
+\end{equation}
+Then we should do a representation transformation: in the gas or liquid system, the momentum is discrete and the real position is continuum. The transformation between the two is
+\begin{eqnarray}
+a_k &=& \frac{1}{\sqrt{{\mathcal{V}}}} \int \ud^d x a(x) \ep^{\im kx}\\
+a(x) &=& \frac{1}{\sqrt{\mathcal{V}}} \sum_k a_k\ep^{-\im kx}
+\end{eqnarray}
+Put these relations in our Lagrangian and we can obtain the Lagrangian Density:
+\begin{eqnarray}
+L = \int \ud^d x \mathcal{L} &=& \int \ud^dx \ud^dx' \frac{1}{\mathcal{V}}\left\{\frac{\im}{2}\left[a^*(x)\partial_ta(x')-a(x)\partial_t a^*(x')\right] -\frac{1}{2m}\partial_x a^*(x)\partial_{x'} a(x')+\mu a^*(x)a(x')\right\}\sum_k\ep^{\pm\im k(x-x')}\nonumber\\
+&=& \int \ud^dx \ud^dx'\left\{\frac{\im}{2}\left[a^*(x)\partial_ta(x')-a(x)\partial_t a^*(x')\right] -\frac{1}{2m}\partial_x a^*(x)\partial_{x'} a(x')+\mu a^*(x)a(x')\right\}\delta^d(x-x')\nonumber\\
+&=&\int \ud^d x \left[\frac{\im}{2}(a^*(x)\partial_t a(x) - a(x)\partial_t a^*(x))-\frac{1}{2m}\partial_x a^*(x)\partial_x a(x)+\mu a(x)^*a(x)\right]
+\end{eqnarray}
+Then to talk about the properties of an interacting system we need to add a potential. For simplicity, assume it is a $\delta$ potential $V(x_1,x_2) = V_0 \delta^d(x_1-x_2) $, then the second quantized form of the potential will be:
+$$
+V = \frac{1}{2}\int \ud^dx\ud^dx' V(x,x')a^\dagger(x)a^\dagger(x') a(x')a(x) = \int \ud^dx \frac{V_0}{2}a^\dagger(x)a^\dagger(x)a(x)a(x)
+$$
+Add this one to the Lagrangian and rename the field operator $a(x)$ by $\phi(x)$ we can find that the Lagrangian (density) of the interacting Boson liquid is
+\begin{equation}
+\mathcal{L} = \frac{\im}{2}\left(\phi^*\partial_t \phi -\phi \partial_t \phi^*\right)-\frac{1}{2m}\partial_x\phi^*\partial_x\phi +\mu |\phi|^2 -\frac{V_0}{2}|\phi|^4
+\end{equation}
+Up till now we have obtained the Lagrangian of the interacting Boson system. It describes a field theory with a $\phi^4$ self-interacting and a ``mass'' term with $\mu$.
+Also we can find the classical equation of motion of this field by variational method, and the result is:
+\begin{equation}
+\im \frac{\partial \phi}{\partial t} = \left(-\frac{1}{2m}\frac{\partial^2}{\partial x^2}-\mu\right)\phi +V_0\phi^*\phi^2
+\end{equation}
+As we see, this equation is some how looks like the Schrodinger Equation. That means, the quantum mechanics can be explained as a classical field theory of the quantum Lagrangian. Use the Legendre transformation we can get the Hamiltonian of this Lagrangian as shown:
+\begin{equation}
+H =\int \ud^dx \left(\frac{1}{2m}\partial_x\phi^*\partial_x\phi -\mu |\phi|^2 +\frac{V_0}{2}|\phi|^4\right)
+\end{equation}
+Actually this is a thermal potential $\Omega$. We will talk about this later.
+\section{The classical ground state and the Landau phase transition theory}
+The Hamiltonian of the Boson liquid is shown in Eq.(9), and we can calculate the classical ground state. Assume the field $\phi(x,t)$ is a constant, and we can easily minimize the energy:
+\begin{equation}
+\frac{\Omega_0}{\mathcal{V}} = -\mu |\phi_0|^2 +\frac{V_0}{2}|\phi_0|^4
+\end{equation}
+Thus the ground state is:
+\begin{equation}
+\phi_0 =\left\{\begin{array}{cl}
+0 & \mu<0\\ \sqrt{\mu/V_0}\,\ep^{\im\theta} & \mu>0
+\end{array}\right.
+\end{equation}
+When $\mu>0$, the ground state of the field $\phi$ is not zero, which breaks the $U(1)$ symmetry of the Lagrangian. This is a kind of second order phase transition. Since the origin Lagrangian has a global $U(1)$ symmetry, when the system transform into the symmetry breaking phase, all the degenerate ground states are related by $U(1)$ transformation, and the system have to choose a state to stay in. After the field settle the choice, the ground state no longer has the symmetry. This is what we call spontaneous symmetry breaking and Landau phase transition theory we have learn in Statistical Mechanics is a spontaneous symmetry breaking.
+
+The symmetry breaking phase of Boson liquid phase is called the ``superfluid'' phase. The position-time correlation function of the classical ground state of the symmetry breaking phase is
+$$
+\langle \phi^\dagger(x,t)\phi(0,0)\rangle = |\phi_0|^2 \neq 0
+$$
+When $(x,t)\rightarrow \infty$, the correlation function is still not zero, and that is called ``long-range correlation''.  
+
+Up till now all of the analysis is classical, in the following sections I will talk about the quantum fluctuation around the ground state at zero temperature $T=0\mathrm{K}$.
+
+\section{Effective Field Theory and Nambu-Goldstone Mode}
+Effective field theory is the method we use to deal with the quantum behavior of low energy excitations. When we do the path integral of an interacting field theory, we can integral over the field we do not care about and get an effective Lagrangian of the other field. 
+
+From the Lagrangian Eq.(7) we know that the Boson liquid is described by a complex scalar field, which has two degrees of freedom. We can treat the density $\rho = \phi^\dagger\phi$ and the phase angle $\theta$ as the two variables.
+\subsection{Equation of motion in symmetric phase}
+First, the symmetric phase with $\mu < 0$. The ground state is $\phi_0=0$ and set $\phi = \phi_0 + \delta \phi$. The dynamics of $\delta \phi$ describes the behavior of small fluctuation around the ground state. We can put $\phi = \delta \phi$ into the equation of motion Eq.(8) and keep only the quadratic terms. That means the $\phi^4$ self-interacting term doesn't contribute to the low energy excitations in the $\mu < 0$ phase. The EOM is
+\begin{equation}
+\im \frac{\partial}{\partial t}\phi = -\frac{1}{2m}\frac{\partial^2}{\partial x^2}\phi-\mu\phi
+\end{equation}
+Since $\mu < 0$, the equation describes an excitation with a finite energy gap $\Delta = -\mu$.(In Bose-Einstein Condensation theory, the chemical potential $\mu \leq 0$, and higher temperature means lower potential. In this problem, symmetric phase is the higher temperature phase.)
+
+\subsection{Equation of motion in symmetry breaking phase and its failure}
+Assume the phase angle of our field operator changes with space and time, and neglect the fluctuation of the density operator, we get
+$$
+\phi =\sqrt{\rho_0 +\delta \rho} \,\ep^{\im \theta} \simeq  \sqrt{\frac{\mu}{V_0}}\,\ep^{\im \theta(x,t)}
+$$
+Then the Lagrangian of the field $\theta(x,t)$ will be
+\begin{equation}
+\mathcal{L} = -\phi_0^2 \partial_t \theta -\frac{\phi_0^2}{2m}(\partial_x \theta)^2 + \mathrm{const.}
+\end{equation}
+But this Lagrangian only have the first order derivative of time, so the equation of motion DO NOT describe any dynamics. That can not explain what happen in this phase, we have neglect too much quantum effects.
+
+\subsection{Effective Field Theory, gap-less excitations.}
+Neglecting the effect of fluctuations of the density is not acceptable, as we have seen in the previous section. For now what should we do? We have to write down the path integral of the field and integrate over the fluctuations of the density. That will course some change to the parameters of the $\theta$ field. First we need to derive the Action of the field $\delta \rho$ and $\theta$ to the second order of $\delta \rho$(We have dropped all the unimportant constants and total derivatives and that cannot change the equation of motion):
+\begin{equation}
+S = \int \ud^dx\, \ud t \left[-(\rho_0 + \delta \rho)\partial_t \theta -\frac{\rho_0}{2m}(\partial_x \theta)^2 -\frac{(\partial_x \delta \rho)^2}{8m\rho_0} -\frac{V_0}{2}\delta \rho^2 + (\mu - V_0 \rho_0)\delta \rho \right]
+\end{equation}
+Since the ground state satisfy $\mu - V_0\rho_0 = 0$, the Action will be
+\begin{equation}
+S = \int \ud^dx\, \ud t \left[-(\rho_0 + \delta \rho)\partial_t \theta -\frac{\rho_0}{2m}(\partial_x \theta)^2 -\frac{(\partial_x \delta \rho)^2}{8m\rho_0} -\frac{V_0}{2}\delta \rho^2 \right]
+\end{equation}
+Then we need to obtain the effective field theory. The path integral of the system is
+\begin{equation}
+Z = \int \mathcal{D}\delta \rho\, \mathcal{D}\theta \exp{\left\{ \im \int  \ud^dx\, \ud t \left[-\delta \rho\partial_t \theta -\frac{\rho_0}{2m}(\partial_x \theta)^2 -\frac{(\partial_x \delta \rho)^2}{8m\rho_0} -\frac{V_0}{2}\delta \rho^2 \right]\right\}}
+\end{equation}
+The $\delta\rho$ part of this integral is a Gaussian style one which can be written as
+$$
+\int \mathcal{D}\delta \rho \exp{\left\{\im \int \ud^dx\,\ud t \left[\frac{1}{2}\delta\rho\left(\frac{\partial_x^2}{4m\rho_0}-V_0\right)\delta \rho-\delta \rho \partial_t \theta\right]\right\}}
+$$
+Then do the integral of $\mathcal{D}\delta \rho$ and then the Effective Path Integral of field $\theta$ is
+\begin{equation}
+Z = \int \mathcal{D}\theta \exp{\left\{\im \int \ud^dx\,\ud t \left[-\frac{\rho_0}{2m}(\partial_x \theta^2 )+ \frac{1}{2}\partial_t \theta \frac{1}{V_0 - \partial_x^2/4m\rho_0}\partial_t \theta\right]\right\}}\simeq  \int \mathcal{D}\theta \exp{\left\{\im \int \ud^dx\,\ud t \left[-\frac{\rho_0}{2m}(\partial_x \theta^2 )+ +\frac{1}{2V_0}(\partial_t \theta)^2\right]\right\}}
+\end{equation}
+So the effective Action and the effective Lagrangian will be
+\begin{eqnarray}
+S_{\mathrm{eff}}&=&\int \ud^dx\,\ud t \left[\frac{1}{2V_0}(\partial_t \theta)^2 - \frac{\rho_0}{2m}(\partial_x\theta)^2\right]\\
+\mathcal{L}_{\mathrm{eff}} &=& \frac{1}{2V_0}(\partial_t \theta)^2 - \frac{\rho_0}{2m}(\partial_x\theta)^2
+\end{eqnarray}
+So what is the difference between Eq.(13) and Eq.(19)? Note that the quantum fluctuation of the field $\delta \rho$ and the coupling term $\delta\rho\partial_t\theta$ give us the $(\partial_t \theta)^2$ term in the effective Lagrangian which cannot be obtained by simply neglecting $\delta \rho$. This is called XY-model, the simplest {\bf{non-linear $\sigma$ model}}. The equation of motion is a wave equation with the dispersion relation:
+\begin{equation}
+\omega = \sqrt{\frac{V_0\rho_0}{m}}|\vec{k}|
+\end{equation}
+That means in the symmetry breaking phase, a gap-less linear excitation which we call {\bf{phonon}} emerges. Write the Lagrangian in the momentum space and do the Legendre transformation we get
+\begin{eqnarray}
+L_{\mathrm{eff}}& = &\sum_k \left[\frac{A_k}{2}\dot{\theta}_{-k}\dot{\theta}_k-\frac{B_k}{2}\theta_k\theta_{-k}\right]\\
+H &=& \sum_k \left[\frac{1}{2A_k}\pi_k\pi_{-k}+\frac{B_k}{2}\theta_k\theta_{-k}\right]
+\end{eqnarray}
+in which
+$$
+A_k =V_0^{-1}\quad B_k = \frac{\rho_0k^2}{m}
+$$
+Then the standard progress: define the creation-annihilation operator of the excitation:
+\begin{equation}
+\alpha_k= \frac{1}{\sqrt{2}}(A_kB_k)^{1/4}\theta_k + \im \frac{1}{\sqrt{2}}(A_kB_k)^{-1/4}\pi_{-k}
+\end{equation}
+and easily we can get the Hamiltonian expressed by the $\alpha$ operators:
+\begin{equation}
+H = \sum_{k} \sqrt{\frac{B_k}{A_k}}\left(\alpha^\dagger_k \alpha_k +\frac{1}{2}\right)
+\end{equation}
+By quantizing canonically, we can also find that the dispersion of the low-energy excitation of the symmetry breaking phase is
+$$
+\omega_k = \sqrt{\frac{B_k}{A_k}} = \sqrt{\frac{V_0\rho_0}{m}}|\vec{k}|
+$$
+Also we have checked that the dispersion in Eq.(20) is the energy of the phonon. Note that the interacting boson system is changed into a non-interacting bosonic excitation. 
+Another problem is to find the relationship between the effective field and the original field. As we have done, we need a source $A_0$ couples with the quantity we want to calculate in the origin Lagrangian. Take the density for example, we can add the term $A_0 \rho$ to the origin Lagrangian and do the integral of $\delta \rho$, then the conclusion will be
+\begin{eqnarray}
+Z &=& \int \mathcal{D}\delta\rho\,\mathcal{D}\theta \exp{\left\{\im \int  \ud^dx\, \ud t \left[-\delta \rho\partial_t \theta -\frac{\rho_0}{2m}(\partial_x \theta)^2 -\frac{(\partial_x \delta \rho)^2}{8m\rho_0} -\frac{V_0}{2}\delta \rho^2 - A_0 (\rho_0 + \delta \rho) \right]\right\}}\nonumber\\
+&=&  \int \mathcal{D}\theta \exp{\left\{\im \int \ud^dx\,\ud t \left[-\frac{\rho_0}{2m}(\partial_x \theta^2 )+ \frac{1}{2}(\partial_t \theta + A_0) \frac{1}{V_0 - \partial_x^2/4m\rho_0}(\partial_t \theta+A_0)-A_0\rho_0\right]\right\}}\nonumber\\
+&\simeq& \int \mathcal{D}\theta \exp{\left\{\im \int \ud^dx\,\ud t  \left[-\frac{\rho_0}{2m}(\partial_x \theta^2 )+ \frac{1}{2V_0}(\partial_t \theta)^2 - A_0\left(\rho_0-\frac{\partial_t \theta}{V_0}\right)\right]\right\}}
+\end{eqnarray}
+We have expand this effective integral to quadratic order of $A_0$ and find that the density operator is
+\begin{equation}
+\rho = \rho_0-\frac{\partial_t \theta}{V_0}
+\end{equation}
+From the equation of continuity we can get the expression of the current
+\begin{equation}
+\vec{j} = \frac{\rho_0}{m}\partial_x\theta
+\end{equation}
+We can also get this result by the effective field theory from the current $\vec{j} = \mathrm{Re}[\phi^\dagger (\partial_x/\im m)\phi]$ and the result is the same as shown in Eq.(27).
+
+Actually, all the results we get from the effective field theory, including the dispersion relation and the Boson current, {\bf{can be obtained by the equation of motion of $\theta$ and $\delta \rho$(the Euler-Lagrange Equation). }}
+\subsection{Failure of low-energy effective theory}
+Check the approximations we have done: in Eq.(17), we neglected the second order derivative term $\partial_x^2 \theta$. Thus the effective theory will fail when $\frac{\partial_x^2}{4m\rho_0}$ is comparable to $V_0$. Then the cut-off momentum is given by $\Lambda\sim\sqrt{4m\rho_0V_0}$. Obviously the cut-off distance is $\xi = \Lambda^{-1}=(4m\rho_0V_0)^{-1/2}$. If the loop diagrams or the correlation function is divergent, then we cut them off at this energy scale.
+
+\subsection{Nambu-Goldstone Modes and symmetry}
+In 1960 and 1961, Nambu and Goldstone proved that {\bf{when a symmetry is spontaneously broken, there must exist a gap-less excitation}}. Take our simplest Boson liquid as an example:
+\begin{itemize}
+\item When $\mu < 0$(symmetry phase), Eq.(12) show that the excitation has an energy gap $\Delta = -\mu$.
+\item When $\mu > 0$(superfluid phase), the effective field theory shows that the excitation is gap-less.
+\item If the original Lagrangian do not have the $U(1)$ symmetry, for example, add a term $g\mathrm{Re}(\phi)$ into the Lagrangian, the effective action will be shown if $\theta\ll 1$ (small quantum fluctuations):
+$$
+S_{\mathrm{eff}} = \int \ud^dx\,\ud t \left[\frac{1}{2V_0}(\partial_t \theta)^2 - \frac{\rho_0}{2m}(\partial_x\theta)^2+g'\theta^2\right]
+$$
+in which parameter $g'$ is determined by $g$ and $\phi_0$. Obviously, the dispersion opened a gap by this term which destroyed the $U(1)$ symmetry.
+\end{itemize}
+
+So why there is a gap-less excitation when the symmetry is spontaneously broken? In symmetry breaking phase, the ground states must be degenerate and the degenerate ground states are connected by the symmetry transformation of the original Lagrangian. For example, in our superfluid phase of the Boson liquid model, all the ground states $\phi_0 = \sqrt{\rho_0}\ep^{\im\theta}$ can be changed into another by $U(1)$ transformation. All of these degenerated ground states can be parametrized by a continuous variable $\theta$, and the dynamics of this variable (which can be obtained by Effective Field Theory) is a gap-less excitation. This is what we call a {\bf{Nambu-Goldstone Mode}}.
+
+\subsection{Long-Range Order and superfluid in lower dimension}
+In section 2 we have calculated the correlation function which is not zero. But we didn't consider about the quantum fluctuation then. So what will happen if the quantum effect is significant? In the symmetry breaking phase, the correlation function (the time-ordered product) of the low-energy effective theory will be
+$$
+\langle \psi_0 |\mathrm{T}\left\{\phi^\dagger(x,t)\phi(0,0)\right\}| \psi_0\rangle =|\phi_0|^2\langle \ep^{-\im\theta(x,t)}\ep^{\im\theta(0,0)}\rangle
+$$
+I will show how to calculate this ugly expression by the Boson style path integral. As we all know, the time ordered correlation function is the ``ensemble average'' of the real time path integral:
+\begin{eqnarray}
+\langle \ep^{-\im\theta(x,t)}\ep^{\im\theta(0,0)}\rangle &=& \frac{\int\mathcal{D}\theta\, \ep^{-\im\theta(x,t)}\ep^{\im\theta(0,0)}\ep^{\im S[\theta(x,t)]}}{\int \mathcal{D}\theta \,\ep^{\im S[\theta(x,t)]}}\nonumber\\
+&=&\frac{\int \mathcal{D}\theta\,\ep^{\im S + \im\int \ud^dx' \ud t'[f(x',t')\theta(x',t')]}}{Z[f=0]}
+\end{eqnarray}
+in which
+$$
+f(x',t') = -\delta^d(x'-x)\delta(t'-t) + \delta^d(x')\delta(t')
+$$
+The source term can be calculated by Gaussian Integral, and the result is
+\begin{equation}
+\langle \ep^{-\im\theta(x,t)}\ep^{\im\theta(0,0)}\rangle =\exp\left\{\frac{\im}{2}\int\ud^dx_1\ud t_1\ud^dx_2\ud t_2 \,f(x_1,t_1)G(x_1-x_2,t_1-t_2)f(x_2,t_2) \right\} = \ep^{-\im G(x,t)+\im G(0,0)}
+\end{equation}
+in which the function $G$ is the inverse of the ``wave equation''
+\begin{equation}
+\frac{\partial_t^2 -v^2\partial_x^2}{V_0}G(x,t) = \delta^{d}(x)\delta(t)
+\end{equation}
+Take the limit that $\mathcal{V}\rightarrow \infty$ and we can solve the propagator $G(x,t)$ easily. In next subsections, we will consider about the vanish of long-range order in lower dimensions.
+\subsubsection{superfluid in $1+1$ D quantum field theory}
+Since we have take the infinite volume limit, the equation can be solved by Fourier transformation. We can also do a Wick rotation $\tau = \im v t$, then the Green function satisfies the following equation:
+\begin{equation}
+(\partial_\tau^2+\partial_x^2)G(x,\tau) = -\frac{\im V_0}{v}\delta(x)\delta(\tau)
+\end{equation}
+That is just the Green function of two dimensional Poisson Equation! We know the solution to this equation is:
+\begin{equation}
+G(x,\tau) = -\frac{\im V_0}{4\pi v}\ln\left(\frac{|x^2 + \tau^2|}{\lambda^2}\right)
+\end{equation}
+in which $\lambda$ is some quantity with dimension of length. Remember that $\tau = \im vt$, and finally we get the result of the Green Function as shown:
+\begin{equation}
+G(x,t) = -\frac{\im V_0}{4\pi v}\ln{\left(\frac{|x^2-v^2t^2|}{\lambda^2}\right)}
+\end{equation}
+Clearly that $G(0,0)$ is divergent. Remember that we are dealing with a low-energy effective theory, so there should be a cut off at some large momentum $\Lambda$ or some small distance $\xi$. The value of the ultra-violet cut off is calculated in Section 3.4, so we can replace $G(0,0)$ by $G(\xi,0)$. Thus the long-range order $\langle \phi^\dagger(x,t)\phi(0,0)\rangle$ will be
+\begin{equation}
+\langle \phi^\dagger(x,t)\phi(0,0)\rangle =\frac{\mu}{V_0}\left(\frac{|x^2 -v^2t^2|}{\xi^2}\right)^{-\frac{V_0}{4\pi v}}
+\end{equation}
+Unfortunately, when $|x|,|t|\rightarrow \infty$, the long-range order becomes zero, which means the quantum fluctuation destroyed the order in one dimension\footnote{In some literatures, Bose-Einstein condensation is defined as spontaneous symmetry breaking, so in 1 dimension at $T=0\mathrm{K}$, there is no BEC, but it is superfluid. See Section 4.}. In this situation, we call the system has a ``quasi-long-range order'', because the correlation function decays algebraicly.
+\subsubsection{superfluid in $2+1$ D quantum field theory}
+Similarly, the equation of the propagator is
+\begin{equation}
+(\partial_\tau^2 +\partial_x^2 +\partial_y^2)G(x,\tau) = -\frac{\im V_0}{v}\delta^2(\vec{r})\delta(\tau)
+\end{equation}
+and the solution is ``Coulomb's Law'':
+$$
+G(\vec{x},\tau) = \frac{\im V_0}{4\pi v}\frac{1}{\sqrt{x^2+y^2+ \tau^2}}
+$$
+Then the correlation is
+\begin{equation}
+G(\vec{x},t) = \frac{\im V_0}{4\pi v}\frac{1}{\sqrt{\vec{x}^2-v^2t^2}}
+\end{equation}
+And the long-range order will be:
+\begin{equation}
+\lim_{|\vec{x}|,|t|\rightarrow \infty}\langle \phi^\dagger(x,t)\phi(0,0)\rangle = \frac{\mu}{V_0}\ep^{-\frac{V_0}{4\pi v \xi}} \neq 0
+\end{equation}
+We found that the behavior of the low-energy excitations in superfluid depends on the dimension sensitively. $d=2$ is the crossover dimension of our superfluid model. This result is given by the form of the interacting term in the Lagrangian, so different potentials lead to different crossover dimensions.\footnote{In finite temperature theory, the result will be a little different: long-range order will be destroyed in 2 dimension.}
+
+\section{Superfluidity at $T=0\mathrm{K}$ and Landau Criterion}
+Since we have known that the dispersion relation of low-energy phonons are linear, then why there is no dissipation in superfluid phase? Imagine that some superfluid flows in a rough tube. Now at zero temperature, the total energy of the liquid is
+\begin{equation}
+E_1=E_{\textrm{ground}}+\frac{Nm\vec{V}^2}{2}
+\end{equation}
+in which $\vec{V}$ is the velocity of the flowing liquid. Now we do an Galileo transformation into the liquid frame, and create an excited state $\epsilon(\vec{k})=v|\vec{k}|$ in it. Then what will happen in the lab frame? Do an inverse transformation and we can conclude that
+\begin{equation}
+E_2=E_{\textrm{ground}}+\frac{Nm\vec{V}^2}{2}+\vec{V}\cdot\vec{k}
+\end{equation}
+Since the energy is always conserved in this lab frame, we have to check if this excitation state can be created. The total kinetic energy of the liquid can become the energy of some other internal degrees of freedom, such as the phonon modes in the liquid or the phonon modes of the tube. Thus $E_2$ must smaller that $E_1$. It is easy to show when
+\begin{equation}
+\epsilon(\vec{k})<|\vec{k}||\vec{V}|\,,
+\end{equation}
+the phonon will be possible to be created. Eq.(40) is the so-called ``{\bf{Landau Criterion}}''. So when boost speed is smaller than the speed of sound in superfluid, this inequality will never be satisfied. We can also find that there is no superfluid in a system whose dispersion relation is $\epsilon = k^2/2m$, because its critical velocity is $v_c=0$. That's why the non-interacting Boson gas can condensate but cannot be superfluid.
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
