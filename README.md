@@ -2,7 +2,7 @@ My Notes of Physics
 ===================
 This is my reading notes of Condensed Matter Physics
 
-I will put my reading notes of the following books:
+I will upload my reading notes of the following books:
 
 1. Altland & Simons, Condensed Matter Field Theory
 2. Xiao-Gang Wen, Quantum Field Theory of Many-Body System
