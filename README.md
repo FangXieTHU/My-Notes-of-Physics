@@ -1,4 +1,4 @@
-My-Notes-of-Physics
+My Notes of Physics
 ===================
 This is my reading notes of Condensed Matter Physics
 
