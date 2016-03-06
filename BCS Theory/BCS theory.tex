@@ -64,11 +64,11 @@ $$
 $$
 Now we try to write down the Action of the interacting term. Use the Matsubara Frequencies, the Action can be written as:
 \begin{equation}
-S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi] = \gamma \sum_{q}\frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\left(\sum_k \bar{\psi}_{k+q\sigma}\psi_{k\sigma} \right)(\phi_{q}+ \bar{\phi}_{-q}) 
+S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi] = \frac{\gamma}{\sqrt{\beta}} \sum_{q}\frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\left(\sum_k \bar{\psi}_{k+q\sigma}\psi_{k\sigma} \right)(\phi_{q}+ \bar{\phi}_{-q}) 
 \end{equation}
-in which $q = (\omega_m, \mtq)$ is a 4-momentum and $\omega_m$ is a Bosonic Matsubara Frequency; $k = (\omega_n,\mtq)$ is also a 4-momentum and $\omega_n$ is a Fermionic Matsubara Frequency. Now we can write down the Action of the whole system in Matsubara representation:
+in which $q = (\omega_m, \mtq)$ is a 4-momentum and $\omega_m$ is a Bosonic Matsubara Frequency; $k = (\omega_n,\mtk)$ is also a 4-momentum and $\omega_n$ is a Fermionic Matsubara Frequency. Now we can write down the Action of the whole system in Matsubara representation:
 \begin{equation}
-S[\bar{\psi},\psi,\bar{\phi},\phi] = \sum_{p}\bar{\psi}_{p\sigma}\left(-i\omega_n +\frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q +  \gamma \sum_{q}\frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\left(\sum_k \bar{\psi}_{k+q\sigma}\psi_{k\sigma} \right)(\phi_{q}+ \bar{\phi}_{-q}) 
+S[\bar{\psi},\psi,\bar{\phi},\phi] = \sum_{p}\bar{\psi}_{p\sigma}\left(-i\omega_n +\frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q + {\gamma\over{\sqrt{\beta}}} \sum_{q}\frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\left(\sum_k \bar{\psi}_{k+q\sigma}\psi_{k\sigma} \right)(\phi_{q}+ \bar{\phi}_{-q}) 
 \end{equation}
 Next step is to integrate out the field of phonon and we can get the effective field theory of electrons:
 \begin{equation}
@@ -77,26 +77,28 @@ S_{\mathrm{eff}}[\bar{\psi},\psi] = S_{\mathrm{el}}[\bar{\psi},\psi] - \ln{\left
 Since the free Action of the phonon system is a quadratic form, and the interaction Action can be treated as a "source" term, we can get the result of this effective action by a Gaussian Integral. The result is:
 \begin{eqnarray}
 & & \ln\left(\int D\bar\phi D\phi\,e^{-S_{\mathrm{ph}}[\bar{\phi},\phi]-S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi]}\right)\nonumber\\
-&=& \ln\left(\int D\bar\phi D\phi\, \exp\left\{- \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q - \gamma\sum_q \frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\rho_q\phi_q - (\rho_q\phi_q\leftrightarrow\rho_{-q}\bar{\phi}_{q}) \right\}\right)\nonumber\\
-&=& - \gamma^2 \sum_q \frac{\mtq^2}{2M\omega_\mtq}\frac{1}{-i\omega_m+ \omega_\mtq}\rho_q\rho_{-q}\nonumber\\
-&=& -\frac{\gamma^2}{2M}\sum_q \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2}\rho_q\rho_{-q}
+&=& \ln\left(\int D\bar\phi D\phi\, \exp\left\{- \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q - \frac{\gamma}{\sqrt{\beta}}\sum_q \frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\rho_q\phi_q - (\rho_q\phi_q\leftrightarrow\rho_{-q}\bar{\phi}_{q}) \right\}\right)\nonumber\\
+&=& - \frac{\gamma^2}{\beta} \sum_q \frac{\mtq^2}{2M\omega_\mtq}\frac{1}{-i\omega_m+ \omega_\mtq}\rho_q\rho_{-q}\nonumber\\
+&=& -\frac{\gamma^2}{2M\beta}\sum_q \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2}\rho_q\rho_{-q}
 \end{eqnarray}
 Then the total Action of electron will be:
 \begin{equation}
-S_{\mathrm{eff}}[\bar{\psi},\psi] = \sum_{p}\bar{\psi}_{p\sigma}\left(-i\omega_n +\frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \frac{\gamma^2}{2M}\sum_{kk'q} \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2} \bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
+S_{\mathrm{eff}}[\bar{\psi},\psi] = \sum_{p}\bar{\psi}_{p\sigma}\left(-i\omega_n +\frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \frac{\gamma'}{2M}\sum_{kk'q} \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2} \bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
 \end{equation}
+in which $\gamma' = \gamma^2/\beta$ is a positive constant.
 Because this Action is represented by Matsubara frequencies (imaginary time representation), it describes the statistical properties of the electron-phonon system. If we want to describe the dynamical properties, we need to use the transformation that $i\omega_m \rightarrow \omega$, and the result is:
 \begin{equation}
-S_{\mathrm{Real Time}}[\bar{\psi},\psi] = \sum_{p}\bar{\psi}_{p\sigma}\left(\omega-\frac{\mtp^2}{2m}+\mu\right)\psi_{p\sigma} - \frac{\gamma^2}{2M}\sum_{kk'q}\frac{\mtq^2}{\omega_\mtq^2-\omega^2} \bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
+S_{\mathrm{Real Time}}[\bar{\psi},\psi] = \sum_{p}\bar{\psi}_{p\sigma}\left(\omega-\frac{\mtp^2}{2m}+\mu\right)\psi_{p\sigma} - \frac{\gamma'}{2M}\sum_{kk'q}\frac{\mtq^2}{\omega_\mtq^2-\omega^2} \bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
 \end{equation}
 Obviously, at low frequencies $\omega < \omega_\mtq$, we can find that the effective interaction between electrons is attractive. What does "low frequencies" mean? It means that the scattered electrons' energy changes slightly, say $|\epsilon_{\mtk_1}-\epsilon_{\mtk_2}|\ll \omega_D$. $\omega_D$ is Debye frequency, which is the characteristic value of $\omega_\mtq$. If the temperature is very low ($T < \omega_D$), electrons move around the Fermi surface in the momentum space, the electrons will attract each other. 
 
-We can explain this attractive force in a brief way. When an electron moves around an ion, the Coulomb force between them will cause a distortion. Ions move slower than electrons, so after the electron goes far away, the ion still doesn't return its equilibrium position and create a local position charge density. Another electron will be attracted by this positive charge density.
 \begin{figure}[!htp]
 \centering
 \includegraphics[width=5cm]{./figures/pic1.png}
 \caption{Attractive interaction between electrons}
 \end{figure}
+
+We can explain this attractive force in a brief way. When an electron moves around an ion, the Coulomb force between them will cause a distortion. Ions move slower than electrons, so after the electron goes far away, the ion still doesn't return its equilibrium position and create a local position charge density. Another electron will be attracted by this positive charge density.
 
 
 \section{BCS Hamiltonian}
