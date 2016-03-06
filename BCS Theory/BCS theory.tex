@@ -25,7 +25,10 @@
 \begin{document}
 \maketitle
 \section{Introduction}
-The superconductor was discovered by Onnes in 1911, and he won the Nobel Prize in Physics in 1913. 
+The superconductor was discovered by Onnes in 1911, and he won the Nobel Prize in Physics in 1913. The electrical resistivity of many metals and alloys drops to zero when they are cooled to a sufficiently low temperature. Also another effect called Meissner effect is discovered in superconductors: it can expel all magnetic flux from its interior. Isotope effect in these materials implied that the lattice is crucial. People couldn't understand these interesting results until 1957, when Bardeen, Cooper and Schrieffer explained that electron-phonon interaction caused these effects.
+
+In 1986, scientists found another kind of superconductors which cannot be explained by BCS theory. Most of them are Metal Oxide, and we cannot understand the microscopic mechanism of these materials up till now.
+
 \section{Electron-Phonon Interaction Action}
 First we need to consider about how to quantize the oscillation of the lattice. The Hamiltonian of the phonon system can be written as:
 $$
@@ -76,9 +79,25 @@ Since the free Action of the phonon system is a quadratic form, and the interact
 & & \ln\left(\int D\bar\phi D\phi\,e^{-S_{\mathrm{ph}}[\bar{\phi},\phi]-S_{\mathrm{el-ph}}[\bar{\phi},\phi,\bar{\psi},\psi]}\right)\nonumber\\
 &=& \ln\left(\int D\bar\phi D\phi\, \exp\left\{- \sum_q \bar{\phi}_q(-i\omega_m+\omega_\mtq)\phi_q - \gamma\sum_q \frac{i|\mtq|}{\sqrt{2M\omega_\mtq}}\rho_q\phi_q - (\rho_q\phi_q\leftrightarrow\rho_{-q}\bar{\phi}_{q}) \right\}\right)\nonumber\\
 &=& - \gamma^2 \sum_q \frac{\mtq^2}{2M\omega_\mtq}\frac{1}{-i\omega_m+ \omega_\mtq}\rho_q\rho_{-q}\nonumber\\
-&=& -\frac{\gamma^2}{2M}\sum_q \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2}\rho_q\rho_{-q}\nonumber\\
-&=& 
+&=& -\frac{\gamma^2}{2M}\sum_q \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2}\rho_q\rho_{-q}
 \end{eqnarray}
+Then the total Action of electron will be:
+\begin{equation}
+S_{\mathrm{eff}}[\bar{\psi},\psi] = \sum_{p}\bar{\psi}_{p\sigma}\left(-i\omega_n +\frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \frac{\gamma^2}{2M}\sum_{kk'q} \frac{\mtq^2}{\omega_m^2 + \omega_\mtq^2} \bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
+\end{equation}
+Because this Action is represented by Matsubara frequencies (imaginary time representation), it describes the statistical properties of the electron-phonon system. If we want to describe the dynamical properties, we need to use the transformation that $i\omega_m \rightarrow \omega$, and the result is:
+\begin{equation}
+S_{\mathrm{Real Time}}[\bar{\psi},\psi] = \sum_{p}\bar{\psi}_{p\sigma}\left(\omega-\frac{\mtp^2}{2m}+\mu\right)\psi_{p\sigma} - \frac{\gamma^2}{2M}\sum_{kk'q}\frac{\mtq^2}{\omega_\mtq^2-\omega^2} \bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
+\end{equation}
+Obviously, at low frequencies $\omega < \omega_\mtq$, we can find that the effective interaction between electrons is attractive. What does "low frequencies" mean? It means that the scattered electrons' energy changes slightly, say $|\epsilon_{\mtk_1}-\epsilon_{\mtk_2}|\ll \omega_D$. $\omega_D$ is Debye frequency, which is the characteristic value of $\omega_\mtq$. If the temperature is very low ($T < \omega_D$), electrons move around the Fermi surface in the momentum space, the electrons will attract each other. 
+
+We can explain this attractive force in a brief way. When an electron moves around an ion, the Coulomb force between them will cause a distortion. Ions move slower than electrons, so after the electron goes far away, the ion still doesn't return its equilibrium position and create a local position charge density. Another electron will be attracted by this positive charge density.
+\begin{figure}[!htp]
+\centering
+\includegraphics[width=5cm]{./figures/pic1.png}
+\caption{Attractive interaction between electrons}
+\end{figure}
+
 
 \section{BCS Hamiltonian}
 
