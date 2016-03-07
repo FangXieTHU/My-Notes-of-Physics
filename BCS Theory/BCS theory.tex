@@ -14,12 +14,18 @@
 \usepackage{feynmf}
 \linespread{1.1}
 
+% frequently used 3-vector notations
 \newcommand{\mtp}{\mathbf{p}}
 \newcommand{\mtq}{\mathbf{q}}
 \newcommand{\mtk}{\mathbf{k}}
 \newcommand{\pnx}{\mathbf{x}}
 \newcommand{\pny}{\mathbf{y}}
 \newcommand{\pnr}{\mathbf{r}}
+
+% frequently use spin notations
+
+\newcommand{\uspin}{\uparrow}
+\newcommand{\dspin}{\downarrow}
 
 \author{\emph{Fang Xie, Department of Physics \& IASTU, Tsinghua University}}
 \title{{\bf{BCS Superconductor Theory}}}
@@ -99,18 +105,26 @@ Obviously, at low frequencies $\omega < \omega_\mtq$, we can find that the effec
 
 \begin{figure}[!htp]
 \centering
-\includegraphics[width=5cm]{./figures/pic1.png}
+\includegraphics[width=4cm]{./figures/pic1.png}
 \caption{Attractive interaction between electrons}
 \end{figure}
 
-We can explain this attractive force in a brief way. When an electron moves around an ion, the Coulomb force between them will cause a distortion. Ions move slower than electrons, so after the electron goes far away, the ion still doesn't return its equilibrium position and create a local position charge density. Another electron will be attracted by this positive charge density.
+We can explain this attractive force in a brief way. When an electron moves around an ion, the Coulomb force between them will cause a distortion. Ions move slower than electrons, so after the electron goes far away, the ion still doesn't return its equilibrium position and create a local positive charge density. Another electron will be attracted by this positive charge density.
 
+\section{BCS Hamiltonian and Cooper Pairs}
+We now concentrate on the behaviour around the Fermi surface. In Section 2 I have showed that the interaction is attractive when the temperature is lower than Debye frequency. That means the scattering process is limited in a shell with width $\Delta \sim \omega_D$ around the Fermi surface as the following figure shows:
+\begin{figure}[!htp]
+\centering
+\includegraphics[width = 4cm]{./figures/pic2.png}
+\caption{Electrons scattering processes happen in the momentum shell.}
+\end{figure}\\
+So we can write down an effective Hamiltonian which describes the electron-electron interaction around the Fermi surface:
+\begin{equation}
+H = \sum_{\mtk}\frac{\mtk^2}{2m}c^\dagger_{\mtk\sigma}c_{\mtk\sigma} - g\sum_{\mtk\mtk'\mtq} c^\dagger_{\mtk+\mtq\uspin}c^\dagger_{-\mtk\dspin}c_{-\mtk'+\mtq \dspin}c_{\mtk'\uspin}
+\end{equation}
+in which $g$ is a positive coupling constant. 
 
-\section{BCS Hamiltonian}
-
-\section{Cooper Pairs}
-
-\section{Spontaneous Symmetry Breaking}
+\section{Mean Field Theory by Path Integral}
 
 \section{Couple to the electromagnetic field}
 
