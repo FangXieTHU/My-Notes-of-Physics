@@ -104,10 +104,68 @@ The second term can be represented by bubble diagrams with one interaction line:
  \end{fmfgraph}
 \caption{Feynman Diagrams of Hartree Fock Approximation}
 \end{figure}
-Now let's find out how to calculate the two diagrams. It is obvious that the photon line in the first diagram has a momentum $V(\mtq=0)$. But our electrons are moving in a Jellium with positive charges, so it has no contribution to the free energy. The second diagram is called "Fock" term. It has a Fermion loop so there will be a minus sign in the contribution.
+Now let's find out how to calculate the two diagrams. It is obvious that the photon line in the first diagram has a momentum $V(\mtq=0)$. But our electrons are moving in a Jellium with positive charges, so it has no contribution to the free energy. The second diagram is called "Fock" term. It has a Fermion loop so there will be a minus sign in the contribution. It is easy to write down the contribution by free electrons Green function
+$$
+G_p = \frac{1}{-i\omega_n + \frac{\mtp^2}{2m}-\mu}
+$$
+So the contribution of the second diagram is:
+\begin{equation}
+F^{(1)} = -\frac{T^2}{L^3} \sum_{pp'}G_{p}G_{p'}V(\mtp-\mtp') = -\frac{1}{L^3}\sum_{\mtp\mtp'}n_F({\epsilon_\mtp})n_F(\epsilon_{\mtp'})V(\mtp'-\mtp)
+\end{equation}
+This summation can be done exactly\footnote{Hint: Use the spherical coordinate in momentum space to do the integral. It is tedious but not difficult.} at $T = 0$: 
+\begin{equation}
+F^{(1)} = -\frac{1}{L^3}\sum_{\epsilon_\mtp,\epsilon_{\mtp'}< \mu}\frac{4\pi e^2}{|\mtp-\mtp'|^2} \simeq -L^3 \int_{\epsilon_\mtp<\mu}\frac{d^3p}{(2\pi)^3}\int_{\epsilon_{\mtp'}<\mu}\frac{d^3p'}{(2\pi)^3}\frac{4\pi e^2}{|\mtp-\mtp'|^2} = -\frac{e^2L^3 p_F^4}{4\pi^3}
+\end{equation}
+But this result is not physical: we can prove that the excitation mode of electron has a zero density of states, say $g(\mu) = 0$. If this is true, the transport properties will be different from what we see in experiments. So if the interaction is screened, this problem will be solved. We will see how to solve this problem by an infinite expansion.
 
 \subsection{Random Phase Approximation by Feynman Diagrams}
-Before we talk about the RPA approximation, I would like to introduce the{\bf{linked-cluster theorem}}:
+Before we talk about the RPA approximation, I would like to introduce the {\bf{linked-cluster theorem}}: partition function is the summation of all the {\bf{Feynman diagrams}} with no out legs; the logarithm is the summation of all the {\bf{connected Feynman diagrams}} with no out legs\footnote{This theorem is proofed in Srednicki's book, p.74-76.}. So the free energy is the summation of all the connected diagrams. RPA liquid, is the summation of all the diagrams as shown:
+\begin{figure}[!htp]
+\centering
+\begin{fmfgraph}(120,120)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmf{phantom}{i1,v1}
+\fmf{phantom}{i2,v3}
+\fmf{phantom}{v5,o2}
+\fmf{phantom}{v7,o1}
+\fmf{fermion,left}{v1,v2,v1}
+\fmf{fermion,left}{v3,v4,v3}
+\fmf{fermion,left}{v5,v6,v5}
+\fmf{fermion,left}{v7,v8,v7}
+\fmf{photon,tension=2}{v2,v3}
+\fmf{photon,tension=2}{v4,v5}
+\fmf{photon,tension=2}{v6,v7}
+\fmf{photon,tension=2}{v8,v1}
+\end{fmfgraph}
+\caption{RPA diagram of order 4.}
+\end{figure}\\
+Now let's calculate the $n$th order contribution of RPA diagram to the free energy:
+\begin{equation}
+F^{(n)} = -T \frac{2^{n-1}(n-1)!}{n!}(-)^n(-)^n\left(\frac{T}{2L^3}\right)^n\sum_q \left(2V(\mtq)\sum_p G_p G_{p+q}\right)^n = -\frac{T}{2n}\sum_q \left(V(\mtq)\frac{2T}{L^3}\sum_p G_p G_{p+q}\right)^n
+\end{equation}
+I will try to explain all of the coefficients in the first equality. $(-)^nn!^{-1}$ comes from the expansion of the $e^{-S_{\mathrm{int}}}$; $2^{n-1}(n-1)!$ is the numbers of the ways you can get this diagram in the correlation function by Wick's theorem (each interacting line has two way to be put in the ring, and there are $(n-1)!$ ways to rearrange all the $n$ interacting lines); another $(-)^n$ comes from the fact that there are $n$ fermion loops in the diagram; the factor $2$ in the summation comes from the spin of the electrons.
 
+Now we can get the free energy of the RPA theroy:
+\begin{equation}
+F^{RPA} = \sum_n F^{(n)}= -\frac{T}{2}\sum_q\ln(1-V(\mtq)\Pi_q)
+\end{equation}
+in which $\Pi_q$ is defined as
+$$
+\Pi_q = \frac{2T}{L^3} \sum_p G_p G_{p+q}
+$$
+We will see that is the polarization operator which describes the vacuum polarization of photons and gives us a screened interaction. It's Feynman Diagram is:
+\begin{equation}
+\parbox{30mm}{\begin{fmfgraph}(80,50) \fmfleft{i1} \fmfright{o1} \fmf{dbl_wiggly}{i1,o1}\end{fmfgraph}}\quad = \quad \parbox{30mm}{\begin{fmfgraph}(80,50) \fmfleft{i1} \fmfright{o1} \fmf{photon}{i1,o1}\end{fmfgraph}} \quad + \quad \parbox{30mm}{\begin{fmfgraph}(80,50) \fmfleft{i1} \fmfright{o1} \fmf{photon}{i1,v1}\fmf{fermion,left}{v1,v2,v1}\fmf{dbl_wiggly}{v2,o1}\end{fmfgraph}}
+\end{equation}
+That means: 
+$$
+V_{\mathrm{eff}}(\mtq) = V(\mtq) + V(\mtq)\Pi_q V_{\mathrm{eff}}(\mtq)\quad \Rightarrow \quad V_{\mathrm{eff}}(\mtq) = \frac{V_{\mtq}}{1-V(\mtq)\Pi_q}
+$$
+At the low frequency limit, this will make the potential has the form of Yukawa interaction, say:
+$$
+V(\mtq) = \frac{4\pi e^2}{\mtq^2 + \nu}
+$$
+For more detailed discussion, Altland's book 5.2 is a good reference.
 \end{fmffile}
 \end{document}
