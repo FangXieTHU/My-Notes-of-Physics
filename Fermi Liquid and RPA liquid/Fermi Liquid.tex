@@ -33,14 +33,81 @@
 
 \begin{document}
 \maketitle
+\begin{fmffile}{FermiLiquid}
 \section{Introduction}
+Fermi Gas is an easy and interesting problem in statistical mechanics. In metals we can treat the electrons as Fermi Gas at $T = 0\mathrm{K}$ because fermi energy of common metal is much higher than room temperature. But this model neglected the Coulomb interaction between the electrons. Now we have to establish a theory to describe the interacting electron system by path integral.
 
-\section{The Path Integral of the Jellium Model}
+\section{Path Integral of Fermi Gas and Fermi Liquid}
+\subsection{Fermi Gas}
+Fermion system is described by a Grassmannian Action. For free Fermions with dispersion $\epsilon = k^2/2m$, the imaginary-time Action is:
+\begin{equation}
+S[\bar{\psi},\psi] = \int_0^\beta d\tau \int d^3x \,\bar{\psi}_\sigma(\pnx,\tau) \left(\partial_\tau - \frac{\nabla^2}{2m}-\mu\right)\psi_\sigma(\pnx,\tau)
+\end{equation}
+Change the Action into the momentum-Mastubara (imaginary-time frequencies) representation, the result is:
+\begin{equation}
+S[\bar{\psi},\psi] = \sum_p \bar{\psi}_{p\sigma}\left(-i\omega_n + \frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma}
+\end{equation}
+By this action, we can get the Grand Canonical partition function is:
+\begin{equation}
+Z = \int D\bar{\psi}D\psi\, e^{-S[\bar{\psi},\psi]}
+\end{equation}
+Clearly this is a Gaussian Integral, we can obtain the result easily, and it is:
+$$
+\ln Z = \ln\prod_{\mtq\omega_n}\beta^{-1}\left(-i\omega_n + \frac{\mtp^2}{2m}-\mu\right) = \sum_{\mtp,\omega_{n}}\ln\left[\beta\left(-i\omega_n + \frac{\mtp^2}{2m}-\mu\right)\right]
+$$
+From the theory of thermodynamics, we can conclude that the particle number is the derivative of the free energy, so by this path integral method we can get the occupying number function for Fermions:
+\begin{equation}
+N = -\frac{\partial F}{\partial \mu} = -\sum_{p}\frac{\beta^{-1}}{-i\omega_n + \frac{\mtp^2}{2m}-\mu} =\sum_{\mtp} n_\mathrm{F}(\epsilon_\mtp)
+\end{equation}
+The second equality can be obtained by a contour integral and it is easy to do, but difficult to think. For details, Altland and Simons' Book 4.2 will be a good reference. I will use this result directly in this note.
 
-\section{Hartree-Fock Approximation}
+\subsection{Fermi Liquid}
+Now we need to add interactions into the Action. Assumes that there is Coulomb interaction between electrons, we can represent the Action in 4-momentum space as:
+\begin{equation}
+S[\bar{\psi},\psi] = \sum_p \bar{\psi}_{p\sigma}\left(-i\omega_n + \frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \frac{T}{2L^3}\sum_{pp'q}V(\mtq)\bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}
+\end{equation}
+in which $V(\mtq) = 4\pi e^2/\mtq^2\,(\mtq \neq 0)$ is the Coulomb interaction. Obviously the partition function is:
+\begin{equation}
+Z = \int D\bar{\psi}D\psi \exp\left\{-\left[\sum_p \bar{\psi}_{p\sigma}\left(-i\omega_n + \frac{\mtp^2}{2m}-\mu\right)\psi_{p\sigma} + \frac{T}{2L^3}\sum_{pp'q}V(\mtq)\bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}\right]\right\}
+\end{equation}
+This is what we We can use this path integral to calculate the ensemble average of lots of quantities. For example, the electron propagator is the ensemble average of the product $\langle\psi_{p\sigma}\bar{\psi}_{p\sigma}\rangle$.
 
-\section{Random Phase Approximation by Feynman Diagrams}
+\section{The Diagram Approach of the Jellium Model}
+\subsection{Hartree-Fock Approximation}
+Now if we define $Z_0$ as the partition function of the free electron system, the partition function of the Jellium model will be:
+\begin{equation}
+Z = Z_0 \langle e^{-S_{\mathrm{int}}[\bar{\psi},\psi]}\rangle_0
+\end{equation}
+Use this formula we can expand the free energy to the first order of $V(\mtq)$, say:
+\begin{equation}
+F = F_0 + \frac{T^2}{2L^3}\sum_{pp'q} V(\mtq)\langle\bar{\psi}_{k+q\sigma}\bar{\psi}_{k'-q\sigma'}\psi_{k'\sigma'}\psi_{k\sigma}\rangle_0
+\end{equation}
+The second term can be represented by bubble diagrams with one interaction line: 
+\begin{figure}[!htp]
+\centering
+ \begin{fmfgraph}(150,30)
+   \fmfleft{i1}
+   \fmfright{o1}
+   \fmf{phantom}{i1,v1}
+   \fmf{phantom}{v2,o1}
+   \fmf{photon}{v1,v2}
+   \fmf{fermion,right}{v1,v1}
+   \fmf{fermion,right}{v2,v2}
+ \end{fmfgraph}
+  \begin{fmfgraph}(150,50)
+   \fmfleft{i1}
+   \fmfright{o1}
+   \fmf{phantom}{i1,v1}
+   \fmf{phantom}{v2,o1}
+   \fmf{photon,tension = 0}{v1,v2}
+   \fmf{fermion,tension = 0,left}{v1,v2,v1}
+ \end{fmfgraph}
+\caption{Feynman Diagrams of Hartree Fock Approximation}
+\end{figure}
+Now let's find out how to calculate the two diagrams. It is obvious that the photon line in the first diagram has a momentum $V(\mtq=0)$. But our electrons are moving in a Jellium with positive charges, so it has no contribution to the free energy. The second diagram is called "Fock" term. It has a Fermion loop so there will be a minus sign in the contribution.
 
-\section{RPA by Mean Field Theory}
+\subsection{Random Phase Approximation by Feynman Diagrams}
+Before we talk about the RPA approximation, I would like to introduce the{\bf{linked-cluster theorem}}:
 
+\end{fmffile}
 \end{document}
