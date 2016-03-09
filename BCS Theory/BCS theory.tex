@@ -120,9 +120,15 @@ We now concentrate on the behaviour around the Fermi surface. In Section 2 I hav
 \end{figure}\\
 So we can write down an effective Hamiltonian which describes the electron-electron interaction around the Fermi surface:
 \begin{equation}
-H = \sum_{\mtk}\frac{\mtk^2}{2m}c^\dagger_{\mtk\sigma}c_{\mtk\sigma} - g\sum_{\mtk\mtk'\mtq} c^\dagger_{\mtk+\mtq\uspin}c^\dagger_{-\mtk\dspin}c_{-\mtk'+\mtq \dspin}c_{\mtk'\uspin}
+H = \sum_{\mtk}\frac{\mtk^2}{2m}c^\dagger_{\mtk\sigma}c_{\mtk\sigma} - \frac{g}{L^3}\sum_{\mtk\mtk'\mtq} c^\dagger_{\mtk+\mtq\uspin}c^\dagger_{-\mtk\dspin}c_{-\mtk'+\mtq \dspin}c_{\mtk'\uspin}
 \end{equation}
-in which $g$ is a positive coupling constant. 
+in which $g$ is a positive coupling constant with dimension $\mathrm{[energy]^{-2}}$. To analysis the Cooper instability, we can calculate the {\bf{two-particle correlation function}} by summing up all the "ladder diagrams".
+\begin{fmffile}{BCSladder}
+\begin{equation}
+C(q) = \parbox{30mm}{\begin{fmfgraph}(100,50) \fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,o1}\fmf{fermion}{i2,o2}\end{fmfgraph}}\quad + \quad \parbox{30mm}{\begin{fmfgraph}(100,50) \fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,o1} \fmf{fermion}{i2,v2,o2} \fmf{photon,tension = 0}{v1,v2}\end{fmfgraph}}\quad + \quad\parbox{30mm}{\begin{fmfgraph}(100,50) \fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,v2,o1}\fmf{fermion}{i2,v3,v4,o2}\fmf{photon,tension = 0}{v1,v3}\fmf{photon,tension = 0}{v2,v4}\end{fmfgraph}} \quad + \quad\cdots
+\end{equation}
+\end{fmffile}
+
 
 \section{Mean Field Theory by Path Integral}
 
