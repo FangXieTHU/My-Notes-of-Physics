@@ -1,0 +1,89 @@
+\documentclass{article}
+\title{Note: Quantum Physics in One Dimension}
+\author{Fang Xie}
+\date{\today}
+
+\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom = 3cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{feynmf}
+\usepackage{exscale}
+\usepackage{relsize}
+\linespread{1.1}
+\begin{document}
+\maketitle
+\section{Basic Concepts fot interacting quantum systems}
+\subsection{Weak Interacting particles}
+\subsubsection{Fermi liquid and free fermions}
+Anti-symmetric wave function: $c^\dagger_k(c_k)$ the (de)creation operator be anti commute with each other. Hamiltonian
+$$
+H = \sum_k \epsilon_k c^\dagger_kc_k
+$$
+and the Fermi energy in condensed matter system is about $\epsilon_F \sim 1\mathrm{eV}\sim 12000\mathrm{K}$. For cold atom systems, $\epsilon_F \sim 100\mathrm{nK}$. 
+Density of states:
+$$
+D(E) = \sum_k \delta(E-\epsilon_k)
+$$
+Average:
+$$
+\langle \cdots \rangle = Z^{-1}Tr\left[e^{-\beta H}\cdots\right]
+$$
+Spechual Function. The correlation function:
+$$
+\langle GS | e^{iHt}c_{x,t}e^{-iHt}c^\dagger_{0,0}|GS\rangle
+$$
+Green Function:
+$$
+G(x,t)=-i\theta(t)\langle [c_{x,t},c^\dagger_{0,0}]\rangle
+$$
+Probability to find an excitation:
+$$
+A(k,\omega) = -\frac{1}{\pi}Im{G(k,\omega)}
+$$
+(Kallen-Lehmmann)
+and the Green Function is
+$$
+G(k,\omega) = \frac{1}{\omega-\xi_k+i\delta}\quad \delta = 0^+
+$$
+$\uparrow$ is the retarded Green Function.\\
+Effect of interaction in metals $U\sim E_F$ so the fermi surface no longer exist.
+Landau Quasi particles--dressed electrons, redefine parameters, effective mass, free quasi particles. $n(\epsilon)$ of quasi particles has a jump at $E_F$.
+
+In 2d and 3d, FLT can get rid of interaction.
+
+\subsubsection{Interacting Boson system}
+BEC:$\langle b^\dagger_k b_k\rangle = N \delta_{k,0}$ and $n_{k} = N_0\delta_{k,0}+ n^{\mathrm{regular}}(k)$.\\Bogoliubov approximation:
+$$
+H = \sum_k \xi_k b^\dagger_k b_k + U\sum_{kk'q}b^\dagger_{k+q}b^\dagger_{k'-q}b_{k'}b_{k}
+$$
+assume that there is macroscopic occupation in $k = 0$ and the Hamiltonian will be quadratic.
+
+\subsection{Strong Correlation System}
+A theory on lattice, tight binding model.
+$$
+H = -t\sum_{\langle ij\rangle}c^\dagger_i c_j
+$$
+transform into momentum space and the result will be
+$$
+H = \sum_k (-2t\cos{k})c^\dagger_kc_k
+$$
+in which the lattice constant $a = 1$.
+\subsection{One Dimensional System}
+
+\section{One dimensional systems; Tomonaga-Luttinger liquid}
+
+\section{Experimental realizations}
+
+\section{Disorder and other perturbation}
+
+\section{Beyond Tomonaga-Luttinger liquid}
+
+\end{document}
+

@@ -131,14 +131,20 @@ in which $g$ is a positive coupling constant with dimension $\mathrm{[energy]^{-
 We can find that Eq(12) is the correlation function of Cooper pairs with momentum $q=0$ : $c_{-\mtk\dspin}c_{\mtk\uspin}$. So if the correlation function is divergent at some temperature, that means there will be a phase transition.
 
 Now let's calculate the result of Cooper instability. The calculating process is the following equaitons:
-\begin{eqnarray}
-C(q=0) &=&\sum_{kk'} G_k G_{-k}\delta_{kk'} + \sum_{kk'}G_{k}G_{-k}\Gamma_0 G_{k'}G_{\-k'}
-\end{eqnarray}
+\begin{equation}
+C(q=0) =\sum_{kk'} G_k G_{-k}\delta_{kk'} + \sum_{kk'}G_{k}G_{-k}\Gamma_0 G_{k'}G_{-k'}
+\end{equation}
 and the vertex $\Gamma$ satisfies that
 $$
-\Gamma_0 = g + g\frac{T}{L^d}\sum_{p}G_{p}G_{-p}\Gamma_0 \quad\Rightarrow\quad \Gamma_0 = \frac{g}{1-\frac{gT}{L^d}\sum_{\mtp}G_p G_{-p}}
+\Gamma_0 = g + g\frac{T}{L^d}\sum_{p}G_{p}G_{-p}\Gamma_0 \quad\Rightarrow\quad \Gamma_0 = \frac{g}{1-\frac{gT}{L^d}\sum_{p}G_p G_{-p}}
 $$
-So if there is a singularity of vertex $\Gamma_0$, that means a second order phase transition. Now we try to find the precise result of the vertex. First we need to get the result of the 
+So if there is a singularity of vertex $\Gamma_0$, that means a second order phase transition. Now we try to find the precise result of the vertex. First we need to get the result of the summation of Green Functions:
+\begin{eqnarray}
+\sum_p G_p G_{-p} &=& \sum_{\mtp}\sum_{\omega_m}\frac{1}{-i\omega_m +\xi_\mtp}\frac{1}{-i\omega_m + \xi_\mtp}\nonumber\\
+&=& 
+\end{eqnarray}
+
+\section{Mean Field Theory at $T = 0\mathrm{K}$}
 
 \section{Mean Field Theory by Path Integral}
 
