@@ -1,5 +1,5 @@
 \documentclass{article}
-\title{Note: Quantum Physics in One Dimension}
+\title{\bf Note: Quantum Physics in One Dimension}
 \author{Fang Xie}
 \date{\today}
 
@@ -33,11 +33,11 @@ D(E) = \sum_k \delta(E-\epsilon_k)
 $$
 Average:
 $$
-\langle \cdots \rangle = Z^{-1}Tr\left[e^{-\beta H}\cdots\right]
+\langle \cdots \rangle = Z^{-1}\mathrm{Tr}\left[e^{-\beta H}\cdots\right]
 $$
 Spechual Function. The correlation function:
 $$
-\langle GS | e^{iHt}c_{x,t}e^{-iHt}c^\dagger_{0,0}|GS\rangle
+\langle \mathrm{GS} | e^{iHt}c_{x,t}e^{-iHt}c^\dagger_{0,0}|\mathrm{GS}\rangle
 $$
 Green Function:
 $$
@@ -45,7 +45,7 @@ G(x,t)=-i\theta(t)\langle [c_{x,t},c^\dagger_{0,0}]\rangle
 $$
 Probability to find an excitation:
 $$
-A(k,\omega) = -\frac{1}{\pi}Im{G(k,\omega)}
+A(k,\omega) = -\frac{1}{\pi}\mathrm{Im}{G(k,\omega)}
 $$
 (Kallen-Lehmmann)
 and the Green Function is
@@ -74,10 +74,37 @@ transform into momentum space and the result will be
 $$
 H = \sum_k (-2t\cos{k})c^\dagger_kc_k
 $$
-in which the lattice constant $a = 1$.
-\subsection{One Dimensional System}
-
+in which the lattice constant $a = 1$. If we add an onsite interactiong term $U$ (Mott-Hubbard Model), it will be come a insulator.
+\subsection{Hubbard Model}
+This model is crucial to understand the strong correlated Bose system.
+The Hamiltonian for Bosons has hooping terms between nearest neighbours and onsite interaction:
+$$
+H = -t\sum_{\langle ij\rangle}(c^\dagger_i c_j + \mathrm{h.c.})+ U\sum_i \rho_i(\rho_i-1) - \mu\sum_i\rho_i
+$$
+for Fermions we have:
+$$
+H = -t\sum_{\langle ij\rangle}(c^\dagger_i c_j + \mathrm{h.c.})+ U\sum_i \rho_{i\uparrow}\rho_{i\downarrow} - \mu\sum_i\rho_i
+$$
+The two Hamiltonians is called Hubbard Model(1963).\\
+{\bf{Bose-Hubbard Model}}. In the case Bosons without spin. The Hamiltonian on the lattice is
+$$
+H = -t\sum_{\langle ij\rangle} b^\dagger_i b_j + \frac{U}{2}\sum_{i}\rho_i(\rho_i-1)
+$$
+Mott-Insulatir phase transition is neither first nor second order phase transition. For $U\gg t$, the system is in the Mott insulator phase, and for $U\ll t$, the system is in the metal phase(in high dimensions, it's Fermi liquid; in one dimension, it's Tomonaga-Luttinger liquid). Mott insulator has one electron in each site, while Band insulator has two electrons ion each site
+\\{\bf{Superexchange}}. For Fermions with Hubbard on site interaction, an effective Hamiltonian of spin degree of freedom will be:
+$$
+H^\mathrm{spin} = J\sum_{\langle ij\rangle}\vec{S}_i\cdot\vec{S}_j
+$$
+and the parameter $J$ is of the order $J\sim \frac{4t^2}{U}$. {\bf{Superexchange for spin one-half Fermions is the antiferromagnetic interaction.}} Because the virtual process with parallel spin on neighbour sites is banned by Pauli principle.\\
+What about the bosons with spin degree of freedom? {\bf{Superexchange interaction with spin one-half Bosons will be ferromagnetic.}}\\
+{\bf{Spinless Fermions}}. Since we cannot have the onsite interaction, we can add interaction on neighbour sites:
+$$
+H = -t\sum_{\langle ij\rangle}(c^\dagger_ic_j + \mathrm{h.c.}) + U\sum_{\langle ij\rangle}n_i n_j
+$$
 \section{One dimensional systems; Tomonaga-Luttinger liquid}
+Physics systems with reduced dimensionality: physics at edge, interface between $\mathrm{LaO}$ and $\mathrm{StO}$ is superconductor, but the two themselves are insulators. In one dimension, only collective excitations can exist. In one dimension the quantum fluctuation is too strong that the long range order will be zero (Mermin-Wagnar theorem). 
+Some examples of one dimension systems: Organic conductors, carbon nanotubes, quantum wires, spin chains and ladders(PRL 86 5168, PRL 101 137207, PRB 79, 020408)\\
+In Cold Atoms system, the kinetic and interaction is easy to manipulate.
 
 \section{Experimental realizations}
 
@@ -86,4 +113,9 @@ in which the lattice constant $a = 1$.
 \section{Beyond Tomonaga-Luttinger liquid}
 
 \end{document}
+
+
+
+
+
 
