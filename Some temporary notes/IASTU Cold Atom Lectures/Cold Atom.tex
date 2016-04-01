@@ -3,7 +3,7 @@
 \author{Fang Xie}
 \date{\today}
 
-\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom = 3cm]{geometry}
+%\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom = 3cm]{geometry}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -102,9 +102,69 @@ $$
 H = -t\sum_{\langle ij\rangle}(c^\dagger_ic_j + \mathrm{h.c.}) + U\sum_{\langle ij\rangle}n_i n_j
 $$
 \section{One dimensional systems; Tomonaga-Luttinger liquid}
+\subsection{Introduction}
 Physics systems with reduced dimensionality: physics at edge, interface between $\mathrm{LaO}$ and $\mathrm{StO}$ is superconductor, but the two themselves are insulators. In one dimension, only collective excitations can exist. In one dimension the quantum fluctuation is too strong that the long range order will be zero (Mermin-Wagnar theorem). 
 Some examples of one dimension systems: Organic conductors, carbon nanotubes, quantum wires, spin chains and ladders(PRL 86 5168, PRL 101 137207, PRB 79, 020408)\\
-In Cold Atoms system, the kinetic and interaction is easy to manipulate.
+In Cold Atoms system, the kinetic and interaction is easy to manipulate. 
+
+The Typical problem in continuum Quantum systems is
+$$
+H = \int dx \, \psi^\dagger\frac{-\nabla^2}{2m}\psi + \frac{1}{2}\int dxdy\,V(x-y)\rho(x)\rho(y) -\mu\int dx \, \rho(x)
+$$
+or in the lattice systems
+$$
+H = -J\sum_{\langle ij\rangle}b^\dagger_ib_j + U\sum_{i}n_i(n_i-1)-\mu\sum_in_i
+$$
+So how to treat these problems? \\Standard many-body theory.
+\begin{itemize}
+\item Exact solution (Bethe ansatz)
+\item Field theory (bosonization, CFT)
+\item Numeries (DMRG,MC, etc.)
+\end{itemize}
+\subsection{Luttinger Liquid}
+In one dimension systems the perturbation theory failed so we need to use new methods to treat. The Hamiltonian is
+$$
+H = \int dx \, \psi^\dagger\frac{-\nabla^2}{2m}\psi + \frac{1}{2}\int dx\,\frac{g}{2} \rho(x)\rho(x) -\mu\int dx \, \rho(x)
+$$
+in which the interacting term is a $\delta$ potential. Now we can define a field $\phi_l$ to describe the particle distribution:
+$$
+\rho(x) = \sum_ i \delta(x-x_i) = \sum_n|\nabla\phi_l(x)|\delta(\phi_l(x)-2\pi n)
+$$
+and that is a unique way of labelling particles.
+Define
+$$
+\phi_l(x) = 2\pi\rho_0 x -2\phi(x)
+$$
+and 
+$$
+\rho(x) = \left[\rho_0-\frac{1}{\pi}\nabla\phi(x)\right]\sum_{p\textrm{\,integer}} e^{i2p(\pi\rho_0x-\phi(x))}\quad \textrm{Poison summation formula}
+$$
+in which the field $\phi(x)$ varies slowly. Then how about the single particle operator?
+$$
+\psi^\dagger = [\rho(x)]^{1/2}e^{-i\theta(x)}
+$$
+we can find the commutation relation of these operators are
+$$
+\left[\frac{1}{\pi}\nabla\phi(x),\theta(x')\right] = -i\delta(x-x')
+$$
+in which $\theta(x)$ is the superfluid phase. The Hamiltonian then becomes
+$$
+H = \frac{1}{2\pi}\int dx\, \left[uK(\pi\Pi(x))^2+\frac{u}{K}(\nabla\phi(x))^2\right]
+$$
+in which the parametres are
+$$
+uK = \frac{\rho_0}{2m}
+$$
+and the explicit value of them are determined both by $U, m, \rho_0$ and some macroscopic values such as compressibility. Calculation result show that the correlation of Boson operators and density operators decays as power law.
+
+For Fermions, the single particle operator is defined as(Jordan–Wigner transformation)
+$$
+\psi_F^\dagger = \psi_B^\dagger e^{i\frac{1}{2}\phi_l(x)}
+$$
+so the Fermion operator can be written as
+$$
+\psi^\dagger_F = \left[\rho_0-\frac{1}{\pi}\nabla\phi(x)\right]^{1/2}\sum_p e^{i(2p+1)(\pi\rho_0x-\phi(x))}e^{-i\theta(x)}
+$$
 
 \section{Experimental realizations}
 
