@@ -165,13 +165,29 @@ so the Fermion operator can be written as
 $$
 \psi^\dagger_F = \left[\rho_0-\frac{1}{\pi}\nabla\phi(x)\right]^{1/2}\sum_p e^{i(2p+1)(\pi\rho_0x-\phi(x))}e^{-i\theta(x)}
 $$
+At finite temperature, the correlation decays as exponential function. $n_F(\xi_k)$ in one dimension does not show the behavior of Fermi liquid ($z=0$).\\ Spin systems can be mapped to Bosons or Fermions:
+$$
+S^+ = (-1)^i e^{i\theta}+e^{i\theta}\cos{(2\phi)}\quad S_Z = \frac{-1}{\pi}\nabla\phi+(-1)^i \cos{(2\phi)}
+$$
 
 \section{Experimental realizations}
-
-\section{Disorder and other perturbation}
+Cold Atom experiments. 
+\begin{itemize}
+\item science VOL 305, 20 AUG, 2004, 1125. One dimensional Tonks-Girardeau liquid
+\item Nature 429 277(2004). Optical lattices (dilute).
+\item Nat. Phys 4 489 (2008).
+\item PRL 108 167201. 
+\end{itemize}
 
 \section{Beyond Tomonaga-Luttinger liquid}
-
+Now we can add a lattice:
+$$
+H = \int dx\, \psi^\dagger\frac{-\nabla^2}{2m}psi+\frac{U}{2}\int dx \rho^2-\mu\int dx\rho+H_\mathrm{lattice}
+$$
+and $H_{\mathrm{lattice}}=\int dx\,V_0 \cos{(Qx)}\rho(x)$. By an approximation that we have used with field $\phi$, we can find the Hamiltonian of lattice is $$
+H_{\mathrm{lattice}}=2V_0\rho_0\int dx\, \cos(2\phi(x))
+$$
+and interesting phase transition phenomenon will emerge.
 \end{document}
 
 
