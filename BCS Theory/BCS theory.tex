@@ -152,16 +152,20 @@ $$
 So the correlation function of Cooper pairs will be divergent. That means when $T<T_c$, the Fermi liquid theory cannot describe the electron system in the metal correctly. Later we will see that blow $T_c$ there is a spontaneous symmetry breaking.  
 
 \section{Mean Field Theory at $T = 0\mathrm{K}$}
-In this section we try to find the ground state of BCS superconductor by mean field theory.
+In this section we try to find the ground state of BCS superconductor by mean field theory. Assumes that at $T= 0 \mathrm{K}$, the expectation value of Cooper pair (with total momentum $\mtq = 0 $) is $\Delta$:
+\begin{equation}
+\Delta = \frac{g}{L^3}\sum_{\mtk}\langle \Omega | c^\dagger_{\mtk \uspin}c^\dagger_{-\mtk \dspin}| \Omega \rangle
+\end{equation}
+So we can do an approximation with the interaction term in the Hamiltonian, 
 
-\section{Hubbard - Stratonovich Transformation}
-In this section we will focus on technical details of the H-S transformation, and the physics will be discussed in the following section.
+\section{Hubbard-Stratonovich Transformation}
+In this section we will focus on technical details of the H-S transformation, and the physics if spontaneous symmetry breaking will be discussed in the following section.
 
 So now let us write down the Action of BCS system in real space:
 \begin{equation}
 S[\bar{\psi},\psi] = \int^\beta_0d\tau\int d^3r\,\left[\bar{\psi}_\sigma\left(\partial_\tau-\frac{\nabla^2}{2m}-\mu\right)\psi_\sigma - g\bar{\psi}_\uspin\bar{\psi}_\dspin\psi_\dspin\psi_\uspin\right]
 \end{equation}
-
+So we can use the Hubbard-Stratonovich transformation to change this Fermi style problem into a Boson problem. Introduce a scalar field $\Delta$ (we will find this is the expectation value of cooper pair later) use the method of effective field theory, we can get the 
 
 \section{Landau-Ginzburg Phase Transition}
 By neglecting quantum fluctuations, we can construct the Landau-Ginzburg Action and find the broken symmetry of Cooper pairs. 
