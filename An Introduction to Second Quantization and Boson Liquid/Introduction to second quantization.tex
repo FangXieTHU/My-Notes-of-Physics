@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom = 3cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{feynmf}
+\linespread{1.1}
+
+% frequently used 3-vector notations
+\newcommand{\mtp}{\mathbf{p}}
+\newcommand{\mtq}{\mathbf{q}}
+\newcommand{\mtk}{\mathbf{k}}
+\newcommand{\pnx}{\mathbf{x}}
+\newcommand{\pny}{\mathbf{y}}
+\newcommand{\pnr}{\mathbf{r}}
+
+% frequently use spin notations
+
+\newcommand{\uspin}{\uparrow}
+\newcommand{\dspin}{\downarrow}
+
+\author{Fang Xie, \emph{Department of Physics, Tsinghua University}}
+\title{{\bf{An Introduction to Second Quantization and Path Integral in Statistical Mechanics}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+Second Quantization is the best way to describe the many-body quantum systems. We can use the creation-annihilation operators to get a lot of interesting results by this method. In this article I will follow the formalism of Pathria's book and show how to use second quantization to get the statistical properties of boson liquid and fermi liquid.
+
+\section{Second quantization of Bosons and Fermions}
+Actually second quantization is the quantization of fields. So we need to define the creation-annihilation operators of the boson or fermion field:
+\begin{eqnarray}
+[a_i,a^\dagger_j] &=& \delta_{ij}\\
+\left[a_i,a_j\right] &=& 0 \\
+\left[a^\dagger_i,a^\dagger_j\right] &=& 0 
+\end{eqnarray}
+in which $i,j$ means some eigenvalue of some operators. For Fermions the commutation relation is altered by anti-commutation relation. Since the commutation relation is just like the upper and lower operators of Harmonic oscillator, we can find that
+$$
+N = \sum_i a^\dagger_i a_i 
+$$
+is the operator of particle number.
+Now introduce the {\bf{one-body operator}}: for any one-body operator $\mathcal{O}_1$, its second-quantized form under its eigenbasis is:
+\begin{equation}
+\hat{O} = \sum_{i}o_i a^\dagger_i a_i
+\end{equation}
+and $o_i$ is the eigenvalue of first-quantized operator $O_1$. Now if we do an representation transformation to basis that are not the eigenvectors of $O_1$, then the second quantized operator will be:
+$$
+\hat{O} = \sum_{ij}\langle i | O_1|j\rangle\, a^\dagger_i a_j
+$$
+For example, the second quantized Hamiltonian is
+$$
+H = \sum_{mtk\sigma}a^\dagger_{\mtk\sigma}a_{\mtk\sigma} \quad\textrm{Free particle system}
+$$
+or
+$$
+H = -t\sum_{\langle ij \rangle}a^\dagger_i a_j\quad \textrm{(Tight-binding approximation)}
+$$
+
+\section{}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
