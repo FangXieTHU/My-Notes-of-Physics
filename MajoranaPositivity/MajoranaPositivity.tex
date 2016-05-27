@@ -12,6 +12,7 @@
 \usepackage{latexsym}
 \usepackage{hyperref}
 \usepackage{feynmf}
+\usepackage{eufrak}
 \linespread{1.1}
 
 % frequently used 3-vector notations
@@ -21,6 +22,7 @@
 \newcommand{\pnx}{\mathbf{x}}
 \newcommand{\pny}{\mathbf{y}}
 \newcommand{\pnr}{\mathbf{r}}
+\newcommand{\Tr}{\mathrm{Tr}}
 
 % frequently use spin notations
 
@@ -33,9 +35,96 @@
 \begin{document}
 \maketitle
 \section{Introduction}
+In this note I will talk about the proof of {\bf{reflection positivity of Majoranas}}, and the conditions of the theorem. Finally I will talk about some examples, including Ising model and Heisenberg Model.
 
+The theorem we want to prove is:
+$$
+\Tr{\left[A\vartheta(A)e^{-H}\right]}\geq 0
+$$
+if the Hamiltonian $H$ satisfy some conditions. Operator $\vartheta$ is anti-linear. In the proof we can find out the condition. We will talk about these in detail in the following sections.
 \section{Proof}
+The proof of the theorem can be divided into the following parts:
+\begin{enumerate}
+\item[(1)] Define the (Hilbert) space and algebra we are consider about.
+\item[(2)] Study the monomial basis on our algebra.
+\item[(3)] Study the Hamiltonian of the problem.
+\item[(4)] Prove the reflection positivity of an inner-product.
+\item[(5)] Use the result of (4) to get the main result.
+\end{enumerate}
+Now the previous steps will be shown in detail in the following sections.
+\subsection{Definition of the space and algebra}
+First we have to deal with the concept ``Majorana''. As an example, we can consider about a lattice, and the creation-annihilation operators can be decomposed into to parts, say two Majoranas:
+$$
+c_{2j-1} = a_j + a^\dagger_j,\quad c_{2j} = i(a_j-a^\dagger_j)
+$$
+Thus it is easy to find the Majoranas obey the Clifford Algebra:
+\begin{equation}
+\{c_i,c_j\} = 2\delta_{ij}
+\end{equation}
+Now we consider the geometrical significants of these operators as a lattice $\Lambda$, and define a reflection operator $\vartheta$, by which the lattice is divided into two sectors:
+$$
+\Lambda = \Lambda_+\cup\Lambda_-\,,\Lambda_+\cap \Lambda_- = \O\,,\vartheta(\Lambda_+) = \vartheta(\Lambda_-)
+$$
+Now we need the operator $\vartheta$ is anti-linear which means that
+$$
+\theta(f+ \lambda g) = \vartheta(f) + \bar{\lambda}\vartheta(g)\,,\lambda \in \mathbb{C}
+$$
+in which $f$ and $g$ are vectors in the Hilbert space. In other words, the operator will take the complex conjugate of the target vector.
 
-\section{Examples and applications}
+Now we will introduce some of the space and algebra. $\mathfrak{A}(\mathcal{B})$ denotes the algebra defined on the set $\mathcal{B}\subset \Lambda$; $\mathfrak{A}_\pm = \mathfrak{A}(\Lambda_\pm)$ is the algebra on $\Lambda_\pm$; $\mathfrak{A}^\mathrm{even}_\pm$ is the algebra with even power on $\Lambda$. In conclusion, the definition is
+\begin{eqnarray*}
+&&\forall A \in \mathfrak{A}_-, A = \sum a_\beta M_\beta, M_\beta \textrm{ is the product of an arbitrary number of Majoranas }c_j \in \Lambda_- \\
+&&\forall A \in \mathfrak{A}^{\mathrm{even}}_-, A = \sum a_\beta M_\beta, M_\beta \textrm{ is the product of an even number of Majoranas }c_j \in \Lambda_- 
+\end{eqnarray*}
+That is all we need to define before we talk about the problem.
 
+\subsection{Hamiltonian}
+We hope the Hamiltonian can be written as the following form:
+\begin{equation}
+H = H_- + H_0 + H_+
+\end{equation}
+and we hope $H_- = \vartheta(H_+)$. The $H_0$ term will have the following form:
+\begin{equation}
+H_0 = \sum_{\mathfrak{J}}J_{\mathfrak{J}}i^{\sigma(\mathfrak{J})}C_{\mathfrak{J}}\vartheta(C_{\mathfrak{J}})
+\end{equation}
+each $\mathfrak{J}$ denotes a distinct product of many Majoranas $C_{\mathfrak{J}}$, and $\sigma(\mathfrak{J})$ is defined as:
+$$
+\sigma(  \mathfrak{J} ) = n(\mathfrak{J})\,\mathrm{mod}\,2
+$$
+in which $n(\mathfrak{J})$ is the number of Majoranas in the product $C_\mathfrak{J}$. At the end of this section we will see the coefficients $J_\mathfrak{J}$ satisfy the following condition if we want reflection positivity is correct:
+\begin{eqnarray*}
+\left\{\begin{array}{ll}
+\textrm{all} J_\mathfrak{J} \geq 0 & \sigma(\mathfrak{J}) = 1\\
+\textrm{or all} J_\mathfrak{J} \leq 0 &\\
+\textrm{all} J_\mathfrak{J} \leq 0 & \sigma(\mathfrak{J}) = 0
+\end{array}\right.
+\end{eqnarray*}
+The reason why these inequalities should be satisfied will be shown in section 2.4.
+
+\subsection{Reflection positivity of the inner-product}
+Consider about an operator $A\in \mathfrak{A}(\Lambda)$, it can be written as a linear combination of monomial basis:
+\begin{equation}
+A = \sum_\beta a_\beta M_\beta
+\end{equation}
+in which $M_\beta$ is a monomial. So easily we can find there are $2^N$ different monomials in $\mathfrak{A}(\Lambda)$.
+
+\subsection{The reflection positivity of Majoranas}
+
+\subsection{Reflection Bounds (Generalized Cauchy-Schwartz inequility)}
+
+\section{Ising Model and Heisenberg Model as examples}
+
+
+\begin{thebibliography}{99}
+\bibitem{a}{Jaffe, A., \& Pedrocchi, F. L. (2014). Reflection Positivity for Majoranas. Annales Henri Poincaré, 16(1), 189–203. http://doi.org/10.1007/s00023-014-0311-y}
+
+\end{thebibliography}
 \end{document}
+
+
+
+
+
+
+
+
