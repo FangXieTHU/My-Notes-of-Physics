@@ -1,0 +1,234 @@
+\documentclass[b5paper]{book}
+
+\usepackage{xeCJK,fontspec}
+%\setmainfont{Times New Roman}
+\setsansfont{Helvetica}
+\setmonofont{Myriad Pro}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+
+\linespread{1.5}
+
+
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=KaiTi]{SimSun}
+
+%导数算符
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\ep}{\mathrm{e}}
+\newcommand{\im}{\mathrm{i}}
+\newcommand{\odup}[3]{\frac{\ud^{#3} #1}{\ud #2^{#3}}}
+\newcommand{\odside}[3]{\frac{\ud^{#3}}{\ud #2^{#3}} #1}
+\newcommand{\pdup}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
+\newcommand{\pdside}[3]{\frac{\partial^{#3}}{\partial #2^{#3}} #1}
+
+%拉普拉斯算符
+\newcommand{\laplacesq}[1]{\pdup{#1}{x}{2}+\pdup{#1}{y}{2}+\pdup{#1}{z}{2}}
+\newcommand{\laplacecy}[1]{\frac{1}{r}\pdup{}{r}{}\left(r\pdup{#1}{r}{}\right)+\frac{1}{r^2}\pdup{#1}{\phi}{2}+\pdup{#1}{z}{2}}
+\newcommand{\laplacesp}[1]{\frac{1}{r^2}\pdup{}{r}{}\left(r^2\pdup{#1}{r}{}\right)+\frac{1}{r^2\sin{\theta}}\pdup{}{\theta}{}\left(\sin{\theta}\pdup{#1}{\theta}{}\right)+\frac{1}{r^2\sin^2{\theta}}\pdup{#1}{\phi}{2}}
+%摄氏度
+\newcommand{\cd}{{}^{\circ}\textrm{C}}
+
+\renewcommand{\figurename}{\emph{图}}
+\renewcommand{\tablename}{\emph{表}}
+\renewcommand{\contentsname}{\emph{目录}}
+\renewcommand{\appendixname}{\emph{附录}}
+
+\title{\bf{凝聚态物理学中的量子场论}}
+
+\author{[日]\,永长直人\quad 著}
+\date{}
+\begin{document}
+\maketitle
+{\frontmatter
+\noindent{\Large{\bf{前言}}}\\
+
+为什么量子场论对于凝聚态物理是如此的必要?
+
+凝聚态物理处理的的问题类型相当广阔, 包含了从气体, 液体, 到固体与等离子体, 而这其中数量庞大的电子和原子核之间的相互作用又导致了非常丰富的物理现象. 量子场论, 是描述具有庞大自由度系统的最恰当的"语言", 因此它对于凝聚态物理的重要性就显而易见了. 事实上, 至今量子场论已经成功的应用于凝聚态物理学中的很多不同的话题中. 最近量子场论在凝聚态系统的电子学性质研究中显得越来越重要, 而这也是本书的主题.
+
+至今为止, 固体中电子的运动已经通过将库仑力简化为平均势场中的单体问题而得到了很好的描述. 这种方法称作平均场理论, 在解释固体材料的电子学性质方面, 以及金属, 绝缘体和半导体的分类方面取得了很好的成果. 需要指出的是, 当今半导体技术的成就都是依赖这些作为基础的.
+
+在平均场近似中, 由于多体运动关联所产生的效果是无法被描述的. 假设这种效果是比较微弱的, 则可以通过微扰论进行处理. 然而近些年来发现了很多不能使用这种标准方法进行处理的系统, 这为我们打开了新世界的大门. 这些和凝聚态物理的新方向相联系的进展, 使得量子理论的基本问题------波和粒子的对偶------通过异乎寻常的方式展现了出来. 在多体理论中, 这种波和粒子的对偶关系以粒子数算符和量子力学相位的正则共轭关系得以体现.
+
+从这个观点出发, 在粒子数固定的具有强排斥作用的系统中, 例如 Mott 绝缘体或 Wigner 晶体中, 电荷密度和自旋密度波是稳定的, 系统显现了它粒子性的一面. 另一面来说, 当粒子的运动导致量子力学相位的相干时, 例如在超导体和超流体中, 相位是固定的, 变得可以观测, 系统就显现出了它波动性的一面. 两方面的这种竞争, 在低维系统和宏观系统中体现得非常明确. 量子霍尔效应, 高温超导, 有机导体, 金属-绝缘体相变以及超导体-绝缘体相变等问题, 都可以从这个视角加以理解.
+
+在这种竞争中产生的新问题有以下三个要点:
+\begin{enumerate}
+  \item{量子相变或者量子临界现象------不同于有限温度下, 源于熵和能量竞争的经典相变, 这种相变发生在绝对零度或者量子涨落显著的低温区.}
+  \item{非常规的基态和低能激发------发现全新的量子态, 例如与高温超导相关的非费米液体, 以及和量子霍尔系统相关的不可压缩量子液体. 它们的元激发, 即 spinon 和 holon 都是满足分数统计的任意子(anyon).}
+  \item{量子相及其拓扑性质------量子相的拓扑性质, 包括拓扑缺陷等, 会体现在固体材料的物理性质上. 尤其是当引入某种加了限制的规范场之后, 类似于量子色动力学中的现象将会在凝聚态系统中出现. }
+\end{enumerate}
+
+本书是为那些并非量子场论专家的研究生和学者所写的. 从量子力学的一个简短回顾出发, 建立起量子场论的框架, 然后将其应用在那些当代凝聚态物理研究中最主要的问题上.
+
+在第一章里, 回顾了量子力学的基本原理, 包括正则对易关系, 对称性和守恒率以及变分原理. 这些都是不仅仅在量子力学中很重要, 而且在量子场论中也很重要的问题. 在第二章中, 使用路径积分量子化方法, 可以方便地进行量子力学和量子场论的类比. 单粒子系统中动量和坐标的对易关系, 对应着多体系统里相位和量子场振幅的对易关系. 对于规范场和自旋, 都有类似的对应关系. 在第三章立, 讨论了相变问题. 这是场论的典型性质, 因为相变不会发生在一个低自由度体系中. 相变问题是当代凝聚态理论的一个基本问题, 并且已经发展到了那些难以定义一个序参量的系统中, 例如拓扑相变 Kosterlitz-Thouless 转变. 规范场理论中的色禁闭问题也进行了讨论.
+
+在完成这些准备之后, 从第四章开始, 讨论了量子场论在一些具体的凝聚态问题中的应用. 第四章是一个热身, 选取了费米系统和玻色系统的典型例子: 库仑相互作用电子气体的经典随机相位近似(RPA)和超流体的 Bogoliubov 理论. 这两个例子证实了路径积分是处理这类问题最清晰的表述. 在第五章中探讨了和超导相关的若干问题. 库伦势的重整化, BCS 理论中的集体激发以及规范不变性这些以前被独立处理的问题, 通过统一的方法进行了讨论. 在第五章的第二部分, 探讨了约瑟夫森结和二维超导体, 这些问题吸引了一些当代研究者的兴趣. 在第六章中, 通过 Chern-Simons 规范场论探讨了(分数)量子霍尔液体中的全新量子态.
+
+当然, 在本书中讨论量子场论的全部应用显然是不可能的, 所以我们的重点在于展示出对于未来的研究有帮助的那些一般结构和想法.
+
+我也要特别感谢我的导师和同事, 尤其是 E. Hanamura, Y. Toyazawa, P. A. Lee, H. Fukuyama, S. Tanaka, M. Imada, K. Ueda, S. Uchida, Y. Tokura, N. Kawakami, A. Furusaki, T. K. Ng, 和 Y. Kuramoto.
+\\
+\\
+\noindent{\emph{1999年一月, 于东京.}}
+\\
+\\
+\rightline{永长直人}
+
+}
+\tableofcontents
+\mainmatter
+\chapter{量子力学的回顾以及场论的基本原理}
+在这个章节中我们主要回顾那些最基本的原理. 从单粒子量子力学开始, 而后是正则对易关系, 对称性和守恒率, 利用场论描述多粒子系统, 最后介绍规范不变形和规范场理论. 这些都是进行后续探讨的基础. 读者应该重新检验量子力学原理的普适性, 以及体会类比思考的效率. 
+\section{单粒子量子力学}
+我们从回忆关于单粒子量子力学的一些事实开始. 在这里提到的一切都会在走向量子场论的道路上变得重要.
+
+单个粒子的运动方程是由薛定谔方程(Schr$\ddot{{\rm o}}$dinger Equation)给出的:
+\begin{equation}\label{scheq}
+i\hbar\frac{\partial \psi(\vec{r},t)}{\partial t}=\hat{H}\psi(\vec{r},t)=\left[\frac{\hat{\vec{p}}^2}{2m}+V(\hat{\vec{r}})\right]\psi(\vec{r},t)\,.
+\end{equation}
+$\psi(\vec{r},t)$就是所谓的波函数, 它所依赖的变量是位置$\vec{r}$与时间$t$. $\hat{H}$是所谓的哈密顿算符(Hamiltonian), 通过作用在波函数$\psi(\vec{r},t)$上来产生一个新的波函数$\hat{H}\psi(\vec{r},t)$. 在后文中, 除了一些显然可以省略的情况中, 算符通过$\hat{}$记号来进行标记. $\hat{\vec{p}}$与$\hat{\vec{r}}$都是三分量的矢量算符, 表示一个粒子的动量和位置. $\hat{\vec{p}}^2/2m$是动能, $V(\hat{\vec{r}})$ 是势能, 两者的和就是粒子的总能量, 也就是哈密顿算符. 式(\ref{scheq})显示, 波函数随时间的演化是由哈密顿量$\hat{H}$所决定的. 通过定义算符的指数:
+\begin{equation}
+\exp(\hat{A})=\sum_{n=0}^\infty\frac{1}{n!}\hat{A}^n\,,
+\end{equation}
+其解可以写成下述形式:
+\begin{equation}
+\psi(\vec{r},t)=\exp\left(-\frac{i}{\hbar}\hat{H}t\right)\psi(\vec{r},0)\,.
+\end{equation}
+
+在量子力学里, 波函数有着几率解释. 波函数绝对值的平方
+\begin{equation}
+P(\vec{r},t)=|\psi(\vec{r},t)|^2
+\end{equation}
+可以被理解成在时刻$t$于位置$\vec{r}$处发现粒子的几率. 所以由于全空间概率的总和(或积分)必须为1, 我们得到了波函数的归一化条件:
+\begin{equation}
+\int d^3r\,P(\vec{r},t)=\int d^3r|\psi(\vec{r},t)|^2=1\,.
+\end{equation}
+
+我们现在解释量子力学的矩阵表述. 把函数$f(\vec{r})$看成是希尔伯特空间(Hilbert Space)中的一个矢量, 然后将这个函数表示的态记为$|f\rangle$. 这样做之后, 算符$\hat{A}$对这个空间中矢量的作用产生了另一个矢量, 而这是一个线性变换. 因此, 它对应着一个矩阵. 更进一步, 对于每一个矢量$|f\rangle$, 都存在一个共轭矢量$\langle f|$, 它们分别被称作右矢(ket)和左矢(bra). 从分量的角度去想, 左矢是右矢的共轭转置. 这个矢量空间中的内积$\langle g|f\rangle$通过下式进行定义:
+\begin{equation}
+\langle g|f\rangle =\int d^3r g^*(\vec{r})f(\vec{r})=\langle f|g\rangle^*\,.
+\end{equation}
+算符$\hat{A}$的矩阵元$\langle g|\hat{A}|f\rangle$通过下式给出
+\begin{equation}\label{mael}
+\langle g|\hat{A}|f\rangle=\langle g|\hat{A}f\rangle=\int d^3r\,g^*(\vec{r})\hat{A}f(\vec{r})\,.
+\end{equation}
+为了给我们现在考虑的问题一个更准确地图像, 我们现在引入希尔伯特空间的正交基$|i\rangle, i=1,2,3\cdots$. (我们在这里写了 $i=1,2,3\cdots$, 然而事实上基不一定构成可数集. 一般地, 当系统的体积是无穷大时. 基矢的集合就是不可数的. 在这种情况下, 求和号$\sum_i$必须使用积分进行替代.) 由于基之间是正交归一的, 这些基满足了正交归一条件:
+\begin{equation}
+\langle i|j\rangle=\delta_{i,j}
+\end{equation}
+以及完备性条件
+\begin{equation}
+\sum_{i}|i\rangle\langle i|=\hat{1}\,.
+\end{equation}
+这里所谓的克罗内克记号(Kronecker delta)$\delta_{i,j}$定义为当$i=j$时为$1$, 其他时候为$0$. $\hat{1}$是单位矩阵, 或者说是所谓的单位算符. 在这组基下, 态矢$|f\rangle$可以通过分量表示:
+\begin{equation}
+|f\rangle=\sum_i |i\rangle\langle i|f\rangle\,,\quad \langle f|=\sum_i\langle f|i\rangle \langle i|\,.
+\end{equation}
+更进一步, $\hat{A}|f\rangle$的分量表示为
+\begin{eqnarray}
+\hat{A}|f\rangle&=&\left(\sum_i |i\rangle \langle i|\right)\hat{A}\left(\sum_j |j\rangle\langle j|\right)|f\rangle\nonumber\\
+&=&\sum_{i,j}|i\rangle \langle i|\hat{A}|j\rangle \langle j|f\rangle
+\end{eqnarray}
+这样式(\ref{mael})就可以写成.
+\begin{equation}
+\langle g|\hat{A}|f\rangle=\sum_{i,j}\langle g|i\rangle \langle i|\hat{A}|j\rangle\langle j|f\rangle\,.
+\end{equation}
+定义算符$\hat{A}$的厄米共轭$\hat{A}^\dagger$(Hermitian conjugate)对任意的$|f\rangle$和$|g\rangle$都满足:
+\begin{equation}\label{defhc}
+\langle g|\hat{A}|f\rangle =\langle \hat{A}^\dagger g|f\rangle\,.
+\end{equation}
+比较一下式(\ref{defhc})和
+\begin{equation}
+|\hat{A}^\dagger g\rangle =\sum_{i,j}|j\rangle\langle i|\hat{A}^\dagger|i\rangle\langle i|j\rangle
+\end{equation}
+的共轭矢和$|f\rangle$的内积 
+\begin{equation}
+\langle \hat{A}^\dagger g|f\rangle=\sum_{i,j}\langle g|i\rangle \langle j|\hat{A}^\dagger|i\rangle^*\langle j|f\rangle\,,
+\end{equation}
+我们得到
+\begin{equation}
+\langle j|\hat{A}^\dagger|i\rangle =\langle i|\hat{A}|j\rangle^*\,.
+\end{equation}
+这其实就是对于矩阵的厄米共轭的定义. 在$\hat{A}=\hat{A}^\dagger$的情况中, $\hat{A}$被称为厄米算符. 在量子力学中, 所有的物理量都是通过厄米算符表示的.
+
+我们现在引入厄米算符$\hat{A}$的本征值$a$和本征态$|a\rangle$:
+\begin{equation}
+\hat{A}|a\rangle= a |a\rangle\,.
+\end{equation}
+通过取和$|a\rangle$的内积我们得到
+\begin{equation}
+\langle a|\hat{A}|a\rangle = a \langle a|a\rangle
+\end{equation}
+通过厄米性可以把等式左侧变化为:
+\begin{equation}\label{coj}
+\langle a|\hat{A}|a\rangle = \langle \hat{A}^\dagger a |a\rangle =\langle \hat{A}a|a\rangle =a^*\langle a|a \rangle
+\end{equation}
+然后我们得到$a=a^*$. 因此得出结论, 本征值$a$一定是实的. 更进一步, 当$a\neq a'$且有
+\begin{equation}
+\langle a'|\hat{A}=a'\langle a'|\,,
+\end{equation}
+则从式(\ref{coj})得出
+\begin{equation}
+\langle a'|\hat{A}|a\rangle = a\langle a'|a\rangle =a'\langle a'|a \rangle
+\end{equation}
+然后我们得到结论是$\langle a'|a\rangle =0$. 这说明了厄米矩阵具有不同本征值的本征矢之间都是互相正交的. 因此, 通过适当的归一化以及将共同本征值的本征空间正交化, 可以通过厄米算符的本征矢来搭建一组正交归一基.
+
+很自然地, 空间坐标$\hat{\vec{r}}$也是厄米算符. $\hat{\vec{r}}$的任意分量$\hat{r}_\alpha$作用在$f(\vec{r})$上得到一个新的函数:
+\begin{equation}\label{posope}
+\hat{r}_\alpha f(\vec{r})=r_\alpha f(\vec{r})\,.
+\end{equation}
+注意到在等号右侧, $r_\alpha$不再是算符而是函数$\vec{r}$的$\alpha$分量. 式(\ref{posope})可以推广为
+\begin{equation}
+V(\hat{\vec{r}})f(\vec{r})=V(\vec{r})f(\vec{r})
+\end{equation}
+其中$V(\vec{r})$就是
+
+\section{多粒子量子力学: 二次量子化}
+\section{变分原理与诺特定理}
+\section{电磁场的量子化}
+
+\chapter{路径积分量子化方法}
+\section{单粒子量子力学与路径积分}
+\section{玻色子的路径积分}
+\section{费米子的路径积分}
+\section{规范场的路径积分}
+\section{自旋系统的路径积分}
+
+\chapter{自发对称性破缺与相变}
+\section{自发对称性破缺}
+\section{Goldstone 模式}
+\section{Kosterlitz-Thouless 转变}
+\section{格点规范理论与禁闭问题}%%
+
+\chapter{场论的简单应用}
+\section{库仑气体的随机相位近似(RPA)}
+\section{超流体的 Bogoliubov 理论}
+
+\chapter{超导相关问题}
+\section{超导与路径积分}
+\section{宏观量子现象与耗散: 约瑟夫森结}
+\section{二维系统中的超导-绝缘体相变与量子涡旋}
+
+\chapter{量子霍尔液体和 Chern-Simons 规范场论}
+\section{二维电子系统}
+\section{二维量子液体的有效场论}
+\section{导出 Lauphlin 波函数}
+
+\begin{appendix}
+\chapter{傅里叶变换}
+\chapter{泛函和变分原理}
+\chapter{量子统计}
+\end{appendix}
+
+\end{document}
