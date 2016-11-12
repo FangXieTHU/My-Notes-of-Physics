@@ -65,13 +65,13 @@
 在这种竞争中产生的新问题有以下三个要点:
 \begin{enumerate}
   \item{量子相变或者量子临界现象------不同于有限温度下, 源于熵和能量竞争的经典相变, 这种相变发生在绝对零度或者量子涨落显著的低温区.}
-  \item{非常规的基态和低能激发------发现全新的量子态, 例如与高温超导相关的非费米液体, 以及和量子霍尔系统相关的不可压缩量子液体. 它们的元激发, 即 spinon 和 holon 都是满足分数统计的任意子(anyon).}
+  \item{非常规的基态和低能激发------发现全新的量子态, 例如与高温超导相关的非费米液体, 以及和量子霍尔系统相关的不可压缩量子液体. 它们的元激发, 即自旋子 (spinon) 和 空穴子 (holon) 都是满足分数统计的任意子(anyon).}
   \item{量子相及其拓扑性质------量子相的拓扑性质, 包括拓扑缺陷等, 会体现在固体材料的物理性质上. 尤其是当引入某种加了限制的规范场之后, 类似于量子色动力学中的现象将会在凝聚态系统中出现. }
 \end{enumerate}
 
 本书是为那些并非量子场论专家的研究生和学者所写的. 从量子力学的一个简短回顾出发, 建立起量子场论的框架, 然后将其应用在那些当代凝聚态物理研究中最主要的问题上.
 
-在第一章里, 回顾了量子力学的基本原理, 包括正则对易关系, 对称性和守恒率以及变分原理. 这些都是不仅仅在量子力学中很重要, 而且在量子场论中也很重要的问题. 在第二章中, 使用路径积分量子化方法, 可以方便地进行量子力学和量子场论的类比. 单粒子系统中动量和坐标的对易关系, 对应着多体系统里相位和量子场振幅的对易关系. 对于规范场和自旋, 都有类似的对应关系. 在第三章立, 讨论了相变问题. 这是场论的典型性质, 因为相变不会发生在一个低自由度体系中. 相变问题是当代凝聚态理论的一个基本问题, 并且已经发展到了那些难以定义一个序参量的系统中, 例如拓扑相变 Kosterlitz-Thouless 转变. 规范场理论中的色禁闭问题也进行了讨论.
+在第一章里, 回顾了量子力学的基本原理, 包括正则对易关系, 对称性和守恒率以及变分原理. 这些都是不仅仅在量子力学中很重要, 而且在量子场论中也很重要的问题. 在第二章中, 使用路径积分量子化方法, 可以方便地进行量子力学和量子场论的类比. 单粒子系统中动量和坐标的对易关系, 对应着多体系统里相位和量子场振幅的对易关系. 对于规范场和自旋, 都有类似的对应关系. 在第三章里, 讨论了相变问题. 这是场论的典型性质, 因为相变不会发生在一个低自由度体系中. 相变问题是当代凝聚态理论的一个基本问题, 并且已经发展到了那些难以定义一个序参量的系统中, 例如拓扑相变 Kosterlitz-Thouless 转变. 规范场理论中的色禁闭问题也进行了讨论.
 
 在完成这些准备之后, 从第四章开始, 讨论了量子场论在一些具体的凝聚态问题中的应用. 第四章是一个热身, 选取了费米系统和玻色系统的典型例子: 库仑相互作用电子气体的经典随机相位近似(RPA)和超流体的 Bogoliubov 理论. 这两个例子证实了路径积分是处理这类问题最清晰的表述. 在第五章中探讨了和超导相关的若干问题. 库伦势的重整化, BCS 理论中的集体激发以及规范不变性这些以前被独立处理的问题, 通过统一的方法进行了讨论. 在第五章的第二部分, 探讨了约瑟夫森结和二维超导体, 这些问题吸引了一些当代研究者的兴趣. 在第六章中, 通过 Chern-Simons 规范场论探讨了(分数)量子霍尔液体中的全新量子态.
 
@@ -95,33 +95,33 @@
 
 单个粒子的运动方程是由薛定谔方程(Schr$\ddot{{\rm o}}$dinger Equation)给出的:
 \begin{equation}\label{scheq}
-i\hbar\frac{\partial \psi(\vec{r},t)}{\partial t}=\hat{H}\psi(\vec{r},t)=\left[\frac{\hat{\vec{p}}^2}{2m}+V(\hat{\vec{r}})\right]\psi(\vec{r},t)\,.
+i\hbar\frac{\partial \psi(\mathbf{r},t)}{\partial t}=\hat{H}\psi(\mathbf{r},t)=\left[\frac{\hat{\mathbf{p}}^2}{2m}+V(\hat{\mathbf{r}})\right]\psi(\mathbf{r},t)\,.
 \end{equation}
-$\psi(\vec{r},t)$就是所谓的波函数, 它所依赖的变量是位置$\vec{r}$与时间$t$. $\hat{H}$是所谓的哈密顿算符(Hamiltonian), 通过作用在波函数$\psi(\vec{r},t)$上来产生一个新的波函数$\hat{H}\psi(\vec{r},t)$. 在后文中, 除了一些显然可以省略的情况中, 算符通过$\hat{}$记号来进行标记. $\hat{\vec{p}}$与$\hat{\vec{r}}$都是三分量的矢量算符, 表示一个粒子的动量和位置. $\hat{\vec{p}}^2/2m$是动能, $V(\hat{\vec{r}})$ 是势能, 两者的和就是粒子的总能量, 也就是哈密顿算符. 式(\ref{scheq})显示, 波函数随时间的演化是由哈密顿量$\hat{H}$所决定的. 通过定义算符的指数:
+$\psi(\mathbf{r},t)$就是所谓的波函数, 它所依赖的变量是位置$\mathbf{r}$与时间$t$. $\hat{H}$是所谓的哈密顿算符(Hamiltonian), 通过作用在波函数$\psi(\mathbf{r},t)$上来产生一个新的波函数$\hat{H}\psi(\mathbf{r},t)$. 在后文中, 除了一些显然可以省略的情况中, 算符通过$\hat{}$记号来进行标记. $\hat{\mathbf{p}}$与$\hat{\mathbf{r}}$都是三分量的矢量算符, 表示一个粒子的动量和位置. $\hat{\mathbf{p}}^2/2m$是动能, $V(\hat{\mathbf{r}})$ 是势能, 两者的和就是粒子的总能量, 也就是哈密顿算符. 式(\ref{scheq})显示, 波函数随时间的演化是由哈密顿量$\hat{H}$所决定的. 通过定义算符的指数:
 \begin{equation}
 \exp(\hat{A})=\sum_{n=0}^\infty\frac{1}{n!}\hat{A}^n\,,
 \end{equation}
 其解可以写成下述形式:
 \begin{equation}
-\psi(\vec{r},t)=\exp\left(-\frac{i}{\hbar}\hat{H}t\right)\psi(\vec{r},0)\,.
+\psi(\mathbf{r},t)=\exp\left(-\frac{i}{\hbar}\hat{H}t\right)\psi(\mathbf{r},0)\,.
 \end{equation}
 
 在量子力学里, 波函数有着几率解释. 波函数绝对值的平方
 \begin{equation}
-P(\vec{r},t)=|\psi(\vec{r},t)|^2
+P(\mathbf{r},t)=|\psi(\mathbf{r},t)|^2
 \end{equation}
-可以被理解成在时刻$t$于位置$\vec{r}$处发现粒子的几率. 所以由于全空间概率的总和(或积分)必须为1, 我们得到了波函数的归一化条件:
+可以被理解成在时刻$t$于位置$\mathbf{r}$处发现粒子的几率. 所以由于全空间概率的总和(或积分)必须为1, 我们得到了波函数的归一化条件:
 \begin{equation}
-\int d^3r\,P(\vec{r},t)=\int d^3r|\psi(\vec{r},t)|^2=1\,.
+\int d^3r\,P(\mathbf{r},t)=\int d^3r|\psi(\mathbf{r},t)|^2=1\,.
 \end{equation}
 
-我们现在解释量子力学的矩阵表述. 把函数$f(\vec{r})$看成是希尔伯特空间(Hilbert Space)中的一个矢量, 然后将这个函数表示的态记为$|f\rangle$. 这样做之后, 算符$\hat{A}$对这个空间中矢量的作用产生了另一个矢量, 而这是一个线性变换. 因此, 它对应着一个矩阵. 更进一步, 对于每一个矢量$|f\rangle$, 都存在一个共轭矢量$\langle f|$, 它们分别被称作右矢(ket)和左矢(bra). 从分量的角度去想, 左矢是右矢的共轭转置. 这个矢量空间中的内积$\langle g|f\rangle$通过下式进行定义:
-\begin{equation}
-\langle g|f\rangle =\int d^3r g^*(\vec{r})f(\vec{r})=\langle f|g\rangle^*\,.
+我们现在解释量子力学的矩阵表述. 把函数$f(\mathbf{r})$看成是希尔伯特空间(Hilbert Space)中的一个矢量, 然后将这个函数表示的态记为$|f\rangle$. 这样做之后, 算符$\hat{A}$对这个空间中矢量的作用产生了另一个矢量, 而这是一个线性变换. 因此, 它对应着一个矩阵. 更进一步, 对于每一个矢量$|f\rangle$, 都存在一个共轭矢量$\langle f|$, 它们分别被称作右矢(ket)和左矢(bra). 从分量的角度去想, 左矢是右矢的共轭转置. 这个矢量空间中的内积$\langle g|f\rangle$通过下式进行定义:
+\begin{equation}\label{inpro}
+\langle g|f\rangle =\int d^3r g^*(\mathbf{r})f(\mathbf{r})=\langle f|g\rangle^*\,.
 \end{equation}
 算符$\hat{A}$的矩阵元$\langle g|\hat{A}|f\rangle$通过下式给出
 \begin{equation}\label{mael}
-\langle g|\hat{A}|f\rangle=\langle g|\hat{A}f\rangle=\int d^3r\,g^*(\vec{r})\hat{A}f(\vec{r})\,.
+\langle g|\hat{A}|f\rangle=\langle g|\hat{A}f\rangle=\int d^3r\,g^*(\mathbf{r})\hat{A}f(\mathbf{r})\,.
 \end{equation}
 为了给我们现在考虑的问题一个更准确地图像, 我们现在引入希尔伯特空间的正交基$|i\rangle, i=1,2,3\cdots$. (我们在这里写了 $i=1,2,3\cdots$, 然而事实上基不一定构成可数集. 一般地, 当系统的体积是无穷大时. 基矢的集合就是不可数的. 在这种情况下, 求和号$\sum_i$必须使用积分进行替代.) 由于基之间是正交归一的, 这些基满足了正交归一条件:
 \begin{equation}
@@ -184,15 +184,63 @@ P(\vec{r},t)=|\psi(\vec{r},t)|^2
 \end{equation}
 然后我们得到结论是$\langle a'|a\rangle =0$. 这说明了厄米矩阵具有不同本征值的本征矢之间都是互相正交的. 因此, 通过适当的归一化以及将共同本征值的本征空间正交化, 可以通过厄米算符的本征矢来搭建一组正交归一基.
 
-很自然地, 空间坐标$\hat{\vec{r}}$也是厄米算符. $\hat{\vec{r}}$的任意分量$\hat{r}_\alpha$作用在$f(\vec{r})$上得到一个新的函数:
+很自然地, 空间坐标$\hat{\mathbf{r}}$也是厄米算符. $\hat{\mathbf{r}}$的任意分量$\hat{r}_\alpha$作用在$f(\mathbf{r})$上得到一个新的函数:
 \begin{equation}\label{posope}
-\hat{r}_\alpha f(\vec{r})=r_\alpha f(\vec{r})\,.
+\hat{r}_\alpha f(\mathbf{r})=r_\alpha f(\mathbf{r})\,.
 \end{equation}
-注意到在等号右侧, $r_\alpha$不再是算符而是函数$\vec{r}$的$\alpha$分量. 式(\ref{posope})可以推广为
+注意到在等号右侧, $r_\alpha$不再是算符而是函数$\mathbf{r}$的$\alpha$分量. 式(\ref{posope})可以推广为
 \begin{equation}
-V(\hat{\vec{r}})f(\vec{r})=V(\vec{r})f(\vec{r})
+V(\hat{\mathbf{r}})f(\mathbf{r})=V(\mathbf{r})f(\mathbf{r})
 \end{equation}
-其中$V(\vec{r})$就是式(\ref{scheq})中的势能. 通过
+其中$V(\mathbf{r})$就是式(\ref{scheq})中的势能. 通过式(\ref{posope})我们能够写出:
+\begin{eqnarray}
+\langle g| \hat{r}_\alpha |f\rangle &=&\int d^3r\, g^*(\mathbf{r})\hat{r}_\alpha f(\mathbf{r})=\int d^3r g^*(\mathbf{r})r_\alpha f(\mathbf{r})=\int d^3 r[r_\alpha g(\mathbf{r})]^* f(\mathbf{r})\nonumber\\
+&=&\int d^3r [\hat{r}_\alpha g(\mathbf{r})]^* f(\mathbf{r})=\langle \hat{r}_\alpha g|f\rangle \,.
+\end{eqnarray}
+这下就可以清楚地看出, 位置算符$\hat{\mathbf{r}}$是一个厄米算符.
+
+现在引入量子态$|\mathbf{r}\rangle$, 表示算符$\hat{\mathbf{r}}$的以$\mathbf{r}$为本征值的本征态:
+\begin{equation}
+\hat{\mathbf{r}}|\mathbf{r}\rangle = \mathbf{r}|\mathbf{r}\rangle\,.
+\end{equation}
+对于$\mathbf{r}\neq \mathbf{r'}$有$\langle \mathbf{r}|\mathbf{r'}\rangle =0$, 因此选取了合适的归一化条件之后有:
+\begin{equation}
+\langle\mathbf{r'}|\mathbf{r}\rangle =\delta (\mathbf{r}-\mathbf{r'})\,.
+\end{equation}
+这里我们引入了所谓的 delta 函数 $\delta(\mathbf{r}-\mathbf{r'}) $, 定义为: 在$\mathbf{r}\neq\mathbf{r'}$时函数值为 0; 在$\mathbf{r}=\mathbf{r'}$时函数值为无穷大, 并且当积分区间包含原点时, 对$\mathbf{r}-\mathbf{r'}$的积分值应为 1. 更进一步, $|\mathbf{r}\rangle$和$\langle \mathbf{r}|$满足了完备性条件:
+\begin{equation}
+\int d^3r\, |\mathbf{r}\rangle \langle \mathbf{r}|=1\,.
+\end{equation}
+对于不熟悉 delta 函数的读者, 请参阅附录A和附录B. 在这里我们可以引入一个离散晶格上的矢量空间. 矢量的不同空间分量通过离散格点上的函数值来进行定义. 这个矢量空间在格点数$N_L$趋向于无穷时给出我们的希尔伯特空间, 也就是说, 当晶格宽度$\Delta x$变成零的时候. 在这种情况向, 求和式$(\Delta x)^3\sum_{\rm lattice}$变成式(\ref{inpro})三维空间上的积分. 我们定义一组态, 在除某个特定点$\mathbf{r}_i$之外的格点都是零, 在点$\mathbf{r}_i$上取值为$1/(\Delta x)^{3/2}$, 这些态构成了这个$N_L$维矢量空间的一组基. 然后我们就得到
+\begin{equation}
+\langle \mathbf{r}_i|\mathbf{r}_j\rangle=\sum_{k}\frac{\delta_{i,k}}{(\Delta x)^{3/2}}\frac{\delta_{k,j}}{(\Delta x)^{3/2}}=\frac{\delta_{i,j}}{(\Delta x)^3}
+\end{equation}
+以及
+\begin{equation}
+(\Delta x)^3\sum_i |\mathbf{r}_i\rangle\langle \mathbf{r}_i|=1\,.
+\end{equation}
+在$\Delta x \rightarrow 0$的极限下, 这些方程都变成了前文中已经提到的关于算符$\hat{\mathbf{r}}$的本征基的内积关系和完备性表达式. 
+
+现在通过$\hat{\mathbf{r}}$的本征基的完备性, 我们可以把内积即式(\ref{inpro})写成
+\begin{equation}
+\langle g|f\rangle =\int d^3r\, \langle g|\mathbf{r}\rangle \langle \mathbf{r}|f\rangle 
+\end{equation}
+然后可以得到
+\begin{eqnarray}
+f(\mathbf{r})&=&\langle \mathbf{r}|f\rangle\nonumber\\
+g^*(\mathbf{r})&=&\langle g |\mathbf{r}\rangle\,.
+\end{eqnarray}
+从这个观点出发, 波函数$\psi(\mathbf{r},t)$不是别的, 正是希尔伯特空间中的量子态$|\psi(t)\rangle$在基下$|\mathbf{r}\rangle$的$\mathbf{r}$分量.
+
+关于动量算符$\hat{\mathbf{p}}$又有什么? 这里, 我们介绍第一个量子力学的基本原理: 正则对易关系. 一个波矢为$\mathrm{k}$的平面波, 可以写成$\psi_\mathbf{k}=(2\pi\hbar)^{-3/2}e^{i\mathbf{k}\cdot\mathbf{r}}$. 把这个平面波写成一个$\mathbf{r}$的函数, 然后使用动量算符:
+\begin{equation}
+\hat{\mathbf{p}}=\frac{\hbar}{i}\frac{\partial}{\partial \mathbf{r}}
+\end{equation}
+我们可以得到
+\begin{equation}
+\hat{\mathbf{p}}\psi_\mathbf{k}(\mathbf{r})=\hbar\mathbf{k}\psi_\mathbf{k}(\mathbf{r})=\mathbf{p}\psi_{\mathbf{k}}(\mathbf{r})
+\end{equation}
+
 
 \section{多粒子量子力学: 二次量子化}
 \section{变分原理与诺特定理}
